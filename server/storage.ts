@@ -113,23 +113,25 @@ export class DatabaseStorage implements IStorage {
     ratingMin?: number;
     location?: string;
   }): Promise<Restaurant[]> {
-    let query = db.select().from(restaurants).where(eq(restaurants.isActive, true));
+    let whereConditions = [eq(restaurants.isActive, true)];
     
     if (filters?.query) {
-      query = query.where(
+      whereConditions.push(
         sql`${restaurants.name} ILIKE ${'%' + filters.query + '%'} OR ${restaurants.description} ILIKE ${'%' + filters.query + '%'}`
       );
     }
     
     if (filters?.priceLevel) {
-      query = query.where(eq(restaurants.priceLevel, filters.priceLevel));
+      whereConditions.push(eq(restaurants.priceLevel, filters.priceLevel));
     }
     
     if (filters?.ratingMin) {
-      query = query.where(gte(restaurants.ratingAvg, filters.ratingMin.toString()));
+      whereConditions.push(gte(restaurants.ratingAvg, filters.ratingMin.toString()));
     }
     
-    return query.orderBy(desc(restaurants.ratingAvg));
+    return db.select().from(restaurants)
+      .where(and(...whereConditions))
+      .orderBy(desc(restaurants.ratingAvg));
   }
 
   async getRestaurant(id: string): Promise<Restaurant | undefined> {
@@ -176,7 +178,7 @@ export class DatabaseStorage implements IStorage {
     const result = await db.update(tables)
       .set({ isActive: false })
       .where(eq(tables.id, id));
-    return result.rowCount > 0;
+    return (result.rowCount || 0) > 0;
   }
 
   // Reservation operations
@@ -214,14 +216,15 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getRestaurantReservations(restaurantId: string, date?: string): Promise<Reservation[]> {
-    let query = db.select().from(reservations)
-      .where(eq(reservations.restaurantId, restaurantId));
+    let whereConditions = [eq(reservations.restaurantId, restaurantId)];
     
     if (date) {
-      query = query.where(eq(reservations.date, date));
+      whereConditions.push(eq(reservations.date, date));
     }
     
-    return query.orderBy(asc(reservations.startTime));
+    return db.select().from(reservations)
+      .where(and(...whereConditions))
+      .orderBy(asc(reservations.startTime));
   }
 
   async updateReservationStatus(id: string, status: string): Promise<Reservation | undefined> {
@@ -236,7 +239,7 @@ export class DatabaseStorage implements IStorage {
     const result = await db.update(reservations)
       .set({ status: "CANCELLED", updatedAt: new Date() })
       .where(eq(reservations.id, id));
-    return result.rowCount > 0;
+    return (result.rowCount || 0) > 0;
   }
 
   // Table availability
@@ -260,13 +263,13 @@ export class DatabaseStorage implements IStorage {
 
   async releaseTableHold(id: string): Promise<boolean> {
     const result = await db.delete(tableHolds).where(eq(tableHolds.id, id));
-    return result.rowCount > 0;
+    return (result.rowCount || 0) > 0;
   }
 
   async releaseExpiredHolds(): Promise<number> {
     const result = await db.delete(tableHolds)
       .where(lte(tableHolds.expiresAt, new Date()));
-    return result.rowCount;
+    return result.rowCount || 0;
   }
 
   // Reviews

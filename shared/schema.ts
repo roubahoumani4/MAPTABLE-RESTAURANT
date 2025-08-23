@@ -229,7 +229,6 @@ export const reservationsRelations = relations(reservations, ({ one, many }) => 
 
 // Insert schemas
 export const insertUserSchema = createInsertSchema(users).omit({
-  id: true,
   createdAt: true,
   updatedAt: true,
 });
