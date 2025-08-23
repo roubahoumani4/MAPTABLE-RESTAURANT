@@ -1,0 +1,112 @@
+PROJECT: TableMap — Restaurant Reservations with Visual Seat Maps, Points & Discounts (Lebanon-ready)
+
+GOAL
+Build a full-stack web app where users browse restaurants, open a visual floor map, pick a specific table, and complete a reservation. Include accounts, ratings, a points system that unlocks restaurant discounts, and a manager dashboard for each restaurant to manage tables, schedules, and offers. Optimize for performance, real-time availability, and Lebanese market needs (Arabic/English, Asia/Beirut timezone, LBP/USD display, WhatsApp/SMS confirmations).
+
+TECH (suggested, but pick equivalents if needed)
+- Frontend: Next.js 14 (App Router) + TypeScript + Tailwind CSS + shadcn/ui
+- Map/Canvas: SVG-based interactive maps (react-zoom-pan-pinch for zoom/pan)
+- Auth & DB: Supabase or Firebase (email/password + OAuth)
+- Real-time: WebSockets (Supabase Realtime or Socket.io)
+- APIs: REST (or Next.js Route Handlers) with zod validation
+- Payments (optional): Stripe (USD) + manual “pay at venue” flow
+- Notifications: Twilio (SMS/WhatsApp) or email via Resend
+- i18n: arabic/en (rtl support), dayjs/timezone set to Asia/Beirut
+- Deployment: Replit + Dockerfile + .env.example
+
+CORE FEATURES
+1) Public Experience
+   - Home: search & filter restaurants (cuisine, rating, price level, location).
+   - Restaurant page: gallery, menu preview, opening hours, policies, rating summary, live “busy/quiet” indicator.
+   - Floor Map: interactive SVG of tables. Each table shows status (Available / Reserved / Held), capacity, and minimum spend if any.
+   - Table Selection: click a table → side panel with details → date/time picker → party size → special requests (e.g., baby chair, window seat).
+   - Real-time Availability: conflicts prevented via live locks; show countdown if someone is holding a table during checkout.
+   - Reservation Flow: login/sign up inline; confirm reservation; send SMS/WhatsApp and email confirmation with QR code.
+   - Loyalty Points: earn points per reservation; show tier (Silver/Gold/Platinum). Display available discount codes dynamically.
+   - Ratings & Reviews: 1–5 stars + text + photo (optional), only after a completed reservation.
+
+2) Auth & Accounts
+   - Roles: USER, RESTAURANT_MANAGER, ADMIN.
+   - User Profile: reservations history, upcoming bookings (modify/cancel within rules), points balance, tier, saved favorites.
+   - Manager Dashboard: 
+       • Floor Map Editor (drag/drop tables, set capacity, table name/zone, smoking/non, min spend).
+       • Scheduling (open/close hours, blackout dates, slot granularity).
+       • Inventory Controls (per-slot table availability, auto-release “no-show” holds).
+       • Offers & Discounts (percentage or fixed, points thresholds, expiry).
+       • Reservation List with statuses (Pending, Confirmed, Seated, Completed, No-show).
+       • Reviews moderation (hide/report abusive, reply as venue).
+   - Admin: approve restaurants, global settings, fraud/spam controls, audit logs.
+
+DATA MODEL (outline)
+- users(id, name, email, phone, role, points, tier, created_at)
+- restaurants(id, name, slug, location{lat,lng,address}, cuisines[], price_level, phone, whatsapp, currency, owner_id, images[], rating_avg, rating_count, opening_hours JSON, created_at)
+- restaurant_managers(id, user_id, restaurant_id, role)
+- floor_maps(id, restaurant_id, version, svg_json, created_at)
+- tables(id, restaurant_id, map_id, label, capacity, zone, smoking, min_spend, x, y, shape)
+- time_slots(id, restaurant_id, date, start_time, end_time, capacity_meta JSON)
+- reservations(id, user_id, restaurant_id, table_id, date, start_time, end_time, party_size, status, hold_expires_at, special_requests, confirmation_code, qr_svg, created_at)
+- holds(id, table_id, date, start_time, end_time, user_id, expires_at)
+- reviews(id, user_id, restaurant_id, rating, text, photos[], created_at, visible)
+- offers(id, restaurant_id, title, description, points_required, discount_type, discount_value, valid_from, valid_to, active)
+- redemptions(id, user_id, offer_id, reservation_id, redeemed_at)
+- audit_logs(id, actor_id, action, entity, entity_id, changes JSON, created_at)
+
+API ENDPOINTS (examples)
+- GET /api/restaurants?query=&cuisine=&rating_gte=
+- GET /api/restaurants/[slug]
+- GET /api/restaurants/[id]/availability?date=YYYY-MM-DD&start=HH:mm&party=4
+- POST /api/reservations (validates hold; creates reservation; emits websocket update; sends notifications)
+- POST /api/holds (create short-lived hold on a table during checkout)
+- PATCH /api/reservations/[id]/cancel
+- POST /api/reviews
+- Manager:
+  - PUT /api/floor-map (save svg_json and table positions)
+  - PUT /api/schedule, PUT /api/offers
+  - GET /api/reservations?status=
+
+BUSINESS LOGIC
+- Reservation Locking: when a user selects a table, create a 2–5 minute “hold.” If timeout, auto-release.
+- Overbooking Guard: enforce one reservation per table per slot; handle buffer times (e.g., 15–30 min).
+- Points Engine: base points per seated reservation (e.g., 100 base + 10/guest), tiers (Silver 0–999, Gold 1000–2999, Platinum 3000+), tier multipliers.
+- Discount Redemption: apply if user has points ≥ threshold; log redemption; reflect in receipt and confirmation.
+- No-Show Policy: manager sets rules; repeated no-shows reduce points multiplier or require card hold.
+- Rating Eligibility: only after completed reservation; one review per reservation.
+
+PERFORMANCE & RELIABILITY
+- SSR/ISR for public pages; client cache with SWR/React Query.
+- WebSocket push for table status changes.
+- Optimistic UI for holds/reservations; reconcile on server response.
+- Rate limiting + bot protection on auth and search.
+- Indexes on (restaurant_id, date, start_time, table_id).
+- Caching: per-restaurant availability cache with short TTL; bust on new holds/reservations.
+- Background jobs (cron): expire holds, send reminders T-24h/T-2h, recalc ratings, archive logs.
+- Image optimization and lazy loading; CDN headers.
+
+SECURITY & COMPLIANCE
+- Input validation with zod; server auth guards by role.
+- Row level security (if Supabase) so managers see only their venue data.
+- Audit logs for manager/admin actions.
+- Secrets via .env; never commit secrets.
+- GDPR-style delete account/export data.
+- Phone verification (OTP) option for reducing fake bookings.
+
+UX DETAILS
+- Arabic/English toggle; RTL styles for Arabic.
+- Currency toggle LBP/USD (approx FX shown with disclaimer).
+- Clear table legends (Available, Reserved, Held).
+- Accessible components (keyboard focus, ARIA labels).
+- Error states: conflict modal if table becomes unavailable mid-checkout.
+- QR code on confirmation (scan at host stand to mark “Arrived/Seated”).
+
+SEED DATA (for demo)
+- Restaurants: “Zaatar & Co.” (Beirut – Lebanese mezze), “Saffron Lane” (Beirut – South Asian), “The Olive Table” (Byblos – Mediterranean).
+- Each with one demo floor map (10–20 tables, mixed capacities).
+
+DELIVERABLES
+1) Working app in Replit with README covering setup, env variables, seed script, and roles.
+2) Database migration scripts.
+3) Admin bootstrap script to create one manager per sample restaurant.
+4) Basic e2e tests for: hold → reserve → confirm → review → points redemption.
+5) Performance checklist and Lighthouse report >90 on Performance/Accessibility/SEO.
+
+Please scaffold the codebase, implement the core flows, provide minimal but clean UI, and include comments for where to extend (payments, waitlist, table-merge for large parties, and corporate/group bookings).
