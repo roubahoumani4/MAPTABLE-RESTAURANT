@@ -7,6 +7,8 @@ import { Star, MapPin, Clock, Utensils, UserPlus, LogIn } from "lucide-react";
 import { Link } from "wouter";
 import { useAuth } from "@/hooks/useAuth";
 import LoginModal from "./LoginModal";
+// Import the Murray logo using Vite's import.meta.url approach
+const murrayLogo = new URL('../assets/images/Murray.png', import.meta.url).href;
 
 interface RestaurantCardProps {
   restaurant: {
@@ -21,6 +23,7 @@ interface RestaurantCardProps {
     ratingAvg: string;
     ratingCount: number;
     isActive?: boolean;
+    availableTables?: number; // Added for availability
   };
 }
 
@@ -31,16 +34,17 @@ export default function RestaurantCard({ restaurant }: RestaurantCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
 
-  const getStatusColor = () => {
-    // Mock availability logic - in real app this would come from API
-    const random = Math.random();
-    if (random > 0.7) return { color: "text-green-600", bg: "bg-green-500", text: "Open now" };
-    if (random > 0.4) return { color: "text-yellow-600", bg: "bg-yellow-500", text: "Busy" };
-    return { color: "text-red-600", bg: "bg-red-500", text: "Full" };
+  // Real availability logic - would come from API
+  const availableTables = restaurant.availableTables || 0;
+  
+  // Simple status based on available tables
+  const getStatus = () => {
+    if (availableTables === 0) return { color: "text-red-600", bg: "bg-red-500", text: "Full" };
+    if (availableTables < 5) return { color: "text-yellow-600", bg: "bg-yellow-500", text: "Busy" };
+    return { color: "text-green-600", bg: "bg-green-500", text: "Open now" };
   };
-
-  const status = getStatusColor();
-  const availableTables = Math.floor(Math.random() * 15) + 1; // Mock available tables
+  
+  const status = getStatus();
 
   const handleViewTables = (e: React.MouseEvent) => {
     if (!isAuthenticated) {
@@ -64,7 +68,28 @@ export default function RestaurantCard({ restaurant }: RestaurantCardProps) {
       <Card className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer group">
         <Link href={`/restaurant/${restaurant.slug}`} className="block">
           <div className="aspect-video bg-gray-200 relative overflow-hidden">
-            {restaurant.images?.[0] && !imageError ? (
+            {/* Special handling for Murrany restaurant to show Murray logo */}
+            {restaurant.slug === 'murrany' ? (
+              <>
+                {!imageLoaded && (
+                  <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-teal-600"></div>
+                  </div>
+                )}
+                <img 
+                  src={murrayLogo} 
+                  alt="Murray Restaurant Logo"
+                  className={`w-full h-full object-contain bg-white group-hover:scale-105 transition-transform duration-300 ${
+                    imageLoaded ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  onLoad={() => setImageLoaded(true)}
+                  onError={() => {
+                    setImageError(true);
+                    setImageLoaded(false);
+                  }}
+                />
+              </>
+            ) : restaurant.images?.[0] && !imageError ? (
               <>
                 {!imageLoaded && (
                   <div className="w-full h-full bg-gray-200 flex items-center justify-center">

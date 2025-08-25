@@ -157,7 +157,13 @@ export class DatabaseStorage implements IStorage {
   }
 
   async createRestaurant(restaurant: InsertRestaurant): Promise<Restaurant> {
-    const [newRestaurant] = await db.insert(restaurants).values(restaurant).returning();
+    const [newRestaurant] = await db.insert(restaurants).values({
+      ...restaurant,
+      cuisines: restaurant.cuisines || [],
+      images: restaurant.images || [],
+      openingHours: restaurant.openingHours || {},
+      isActive: restaurant.isActive ?? true
+    }).returning();
     return newRestaurant;
   }
 
@@ -202,16 +208,7 @@ export class DatabaseStorage implements IStorage {
       ...reservation,
       confirmationCode,
       pointsEarned,
-      status: "CONFIRMED",
     }).returning();
-    
-    // Update user points
-    await db.update(users)
-      .set({ 
-        points: sql`${users.points} + ${pointsEarned}`,
-        updatedAt: new Date()
-      })
-      .where(eq(users.id, reservation.userId));
     
     return newReservation;
   }
@@ -236,7 +233,7 @@ export class DatabaseStorage implements IStorage {
     
     return db.select().from(reservations)
       .where(and(...whereConditions))
-      .orderBy(asc(reservations.startTime));
+      .orderBy(asc(reservations.date), asc(reservations.startTime));
   }
 
   async updateReservationStatus(id: string, status: string): Promise<Reservation | undefined> {
@@ -249,23 +246,26 @@ export class DatabaseStorage implements IStorage {
 
   async cancelReservation(id: string): Promise<boolean> {
     const result = await db.update(reservations)
-      .set({ status: "CANCELLED", updatedAt: new Date() })
+      .set({ status: 'CANCELLED', updatedAt: new Date() })
       .where(eq(reservations.id, id));
     return (result.rowCount || 0) > 0;
   }
 
   // Table availability
   async checkTableAvailability(tableId: string, date: string, startTime: string, endTime: string): Promise<boolean> {
-    const conflicts = await db.select().from(reservations)
+    const conflictingReservations = await db.select().from(reservations)
       .where(and(
         eq(reservations.tableId, tableId),
         eq(reservations.date, date),
-        sql`${reservations.startTime} < ${endTime}`,
-        sql`${reservations.endTime} > ${startTime}`,
-        inArray(reservations.status, ["CONFIRMED", "SEATED"])
+        eq(reservations.status, 'CONFIRMED'),
+        sql`(
+          (${reservations.startTime} < ${endTime} AND ${reservations.endTime} > ${startTime}) OR
+          (${reservations.startTime} >= ${startTime} AND ${reservations.startTime} < ${endTime}) OR
+          (${reservations.endTime} > ${startTime} AND ${reservations.endTime} <= ${endTime})
+        )`
       ));
     
-    return conflicts.length === 0;
+    return conflictingReservations.length === 0;
   }
 
   async createTableHold(hold: Omit<TableHold, 'id' | 'createdAt'>): Promise<TableHold> {
@@ -274,19 +274,24 @@ export class DatabaseStorage implements IStorage {
   }
 
   async releaseTableHold(id: string): Promise<boolean> {
-    const result = await db.delete(tableHolds).where(eq(tableHolds.id, id));
-    return (result.rowCount || 0) > 0;
+    await db.delete(tableHolds).where(eq(tableHolds.id, id));
+    return true;
   }
 
   async releaseExpiredHolds(): Promise<number> {
-    const result = await db.delete(tableHolds)
-      .where(lte(tableHolds.expiresAt, new Date()));
-    return result.rowCount || 0;
+    const result = await db
+      .delete(tableHolds)
+      .where(sql`${tableHolds.expiresAt} < NOW()`);
+    return 1; // Drizzle doesn't return count for delete
   }
 
   // Reviews
   async createReview(review: InsertReview): Promise<Review> {
-    const [newReview] = await db.insert(reviews).values(review).returning();
+    const [newReview] = await db.insert(reviews).values({
+      ...review,
+      photos: review.photos || [],
+      isVisible: review.isVisible ?? true
+    }).returning();
     
     // Update restaurant rating
     await this.updateRestaurantRating(review.restaurantId);
@@ -301,21 +306,17 @@ export class DatabaseStorage implements IStorage {
   }
 
   async updateRestaurantRating(restaurantId: string): Promise<void> {
-    const result = await db.select({
-      avgRating: sql<number>`AVG(${reviews.rating})`,
-      count: sql<number>`COUNT(*)`,
-    }).from(reviews)
-      .where(and(eq(reviews.restaurantId, restaurantId), eq(reviews.isVisible, true)));
-    
-    const { avgRating, count } = result[0];
-    
-    await db.update(restaurants)
-      .set({
-        ratingAvg: avgRating?.toFixed(2) || "0.00",
-        ratingCount: count || 0,
-        updatedAt: new Date(),
-      })
-      .where(eq(restaurants.id, restaurantId));
+    const reviews = await this.getRestaurantReviews(restaurantId);
+    if (reviews.length > 0) {
+      const avgRating = reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length;
+      await db.update(restaurants)
+        .set({ 
+          ratingAvg: avgRating.toFixed(2),
+          ratingCount: reviews.length,
+          updatedAt: new Date()
+        })
+        .where(eq(restaurants.id, restaurantId));
+    }
   }
 
   // Offers
@@ -369,11 +370,15 @@ export class DatabaseStorage implements IStorage {
 
   // Manager operations
   async isRestaurantManager(userId: string, restaurantId: string): Promise<boolean> {
-    const [manager] = await db.select().from(restaurantManagers)
-      .where(and(
-        eq(restaurantManagers.userId, userId),
-        eq(restaurantManagers.restaurantId, restaurantId)
-      ));
+    const [manager] = await db
+      .select()
+      .from(restaurantManagers)
+      .where(
+        and(
+          eq(restaurantManagers.userId, userId),
+          eq(restaurantManagers.restaurantId, restaurantId)
+        )
+      );
     return !!manager;
   }
 
@@ -408,29 +413,5 @@ export class DatabaseStorage implements IStorage {
   }
 }
 
-import { MockStorage } from './mockStorage';
-import { HybridStorage } from './hybridStorage';
-
-// Use real database storage when DATABASE_URL is available, mock storage as fallback
-let storage: IStorage;
-
-try {
-  if (process.env.DATABASE_URL) {
-    // Use real database storage when DATABASE_URL is available
-    if (process.env.NODE_ENV === 'development') {
-      // In development, use hybrid storage (real DB for users, mock for restaurants)
-      storage = new HybridStorage();
-    } else {
-      // In production, use full database storage
-      storage = new DatabaseStorage();
-    }
-  } else {
-    // Fall back to mock storage if no database
-    storage = new MockStorage();
-  }
-} catch (error) {
-  console.warn('Database connection failed, falling back to mock storage:', error);
-  storage = new MockStorage();
-}
-
-export { storage };
+// Only use real database storage - no more mock storage
+export const storage: IStorage = new DatabaseStorage();

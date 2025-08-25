@@ -30,35 +30,22 @@ export default function FloorMap({ tables, onTableSelect, restaurantId }: FloorM
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [showBookingDialog, setShowBookingDialog] = useState(false);
 
-  // Mock booking data - in real app this would come from form
-  const mockBookingData = {
-    date: new Date().toISOString().split('T')[0],
-    startTime: "19:30",
-    endTime: "21:30"
-  };
-
   const handleTableClick = (table: Table) => {
-    if (table.isActive) {
-      setSelectedTable(table);
-      setShowBookingDialog(true);
-    }
-  };
-
-  const handleConfirmSelection = () => {
-    if (selectedTable) {
-      onTableSelect(selectedTable, mockBookingData);
-      setShowBookingDialog(false);
-      setSelectedTable(null);
+    if (onTableSelect) {
+      // Pass the selected table to parent component for real booking data
+      onTableSelect(table, {
+        partySize: 2,
+        date: new Date().toISOString().split('T')[0],
+        startTime: '19:00',
+        endTime: '21:00'
+      });
     }
   };
 
   const getTableStatus = (table: Table) => {
-    // Mock table status - in real app this would come from availability API
-    const statuses = ['available', 'reserved', 'held'];
-    const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
-    
-    if (!table.isActive) return 'unavailable';
-    return randomStatus;
+    // Real table status would come from availability API
+    // For now, return a default status
+    return 'available';
   };
 
   const getTableColor = (table: Table) => {
@@ -162,11 +149,11 @@ export default function FloorMap({ tables, onTableSelect, restaurantId }: FloorM
                 </button>
               ))}
               
-              {/* Mock kitchen/bar areas */}
-              <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-gray-300 rounded-lg px-4 py-2 text-gray-600 text-sm">
+              {/* Kitchen/Bar areas - Would be populated from real floor plan data */}
+              <div className="absolute bottom-4 left-4 bg-gray-800 text-white px-3 py-2 rounded-lg text-sm">
                 Kitchen
               </div>
-              <div className="absolute bottom-4 right-4 bg-gray-300 rounded-lg px-4 py-2 text-gray-600 text-sm">
+              <div className="absolute bottom-4 right-4 bg-gray-800 text-white px-3 py-2 rounded-lg text-sm">
                 Bar
               </div>
             </div>
@@ -285,7 +272,12 @@ export default function FloorMap({ tables, onTableSelect, restaurantId }: FloorM
                   Cancel
                 </Button>
                 <Button 
-                  onClick={handleConfirmSelection}
+                  onClick={() => {
+                    // This button is now effectively a "Continue" button for the dialog
+                    // The actual booking logic would be handled by the parent component
+                    setShowBookingDialog(false);
+                    setSelectedTable(null);
+                  }}
                   className="bg-primary text-white hover:bg-primary/90"
                   data-testid="button-confirm-table-selection"
                 >

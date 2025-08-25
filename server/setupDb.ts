@@ -1,6 +1,6 @@
 import { db } from './db';
 import { sql } from 'drizzle-orm';
-import { mockRestaurants, mockFloorMaps, mockTables } from './mockData';
+// Mock data imports removed - no more mock restaurants
 import { restaurants, floorMaps, tables, users } from '../shared/schema';
 import { hashPassword } from './auth/utils';
 
@@ -100,28 +100,8 @@ async function setupDatabase() {
 
     console.log('Restaurant manager created/updated');
 
-    // Insert mock data
-    try {
-      await db.insert(restaurants).values(mockRestaurants);
-      console.log('Mock restaurants added');
-    } catch (error) {
-      console.log('Restaurants already exist or error occurred:', error);
-    }
-
-    try {
-      await db.insert(floorMaps).values(mockFloorMaps);
-      console.log('Mock floor maps added');
-    } catch (error) {
-      console.log('Floor maps already exist or error occurred:', error);
-    }
-
-    try {
-      await db.insert(tables).values(mockTables);
-      console.log('Mock tables added');
-    } catch (error) {
-      console.log('Tables already exist or error occurred:', error);
-    }
-
+    // Mock data insertion removed - no more mock restaurants
+    
     console.log('Database setup completed successfully');
     console.log('\nTest Accounts:');
     console.log('Admin: admin@tablemap.com / admin123');

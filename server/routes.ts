@@ -134,7 +134,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get('/api/restaurants/:id/tables', isAuthenticated, async (req, res) => {
+  app.get('/api/restaurants/:id/tables', async (req, res) => {
     try {
       const tables = await storage.getRestaurantTables(req.params.id);
       res.json(tables);

@@ -1,0 +1,2810 @@
+{
+  "total_tables": 66,
+  "sections": {
+    "section_1_4": {
+      "name": "Main Dining (Sections 1-4)",
+      "tables": [
+        "TableInfo(id='table-001', label='1', capacity=2, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=120.0, y=120.0, centroid_x=150.0, centroid_y=144.0, rotation=0.0, width=60, height=48, smoking=False, accessible=False, min_spend=0.0, svg_path='M 120.0,120.0 L 180.0,120.0 L 180.0,168.0 L 120.0,168.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[120.0, 120.0], [180.0, 120.0], [180.0, 168.0], [120.0, 168.0], [120.0, 120.0]]]}, is_active=True)",
+        "TableInfo(id='table-002', label='2', capacity=4, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=300.0, y=120.0, centroid_x=340.0, centroid_y=152.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 300.0,120.0 L 380.0,120.0 L 380.0,184.0 L 300.0,184.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[300.0, 120.0], [380.0, 120.0], [380.0, 184.0], [300.0, 184.0], [300.0, 120.0]]]}, is_active=True)",
+        "TableInfo(id='table-003', label='3', capacity=2, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=480.0, y=120.0, centroid_x=510.0, centroid_y=144.0, rotation=0.0, width=60, height=48, smoking=False, accessible=False, min_spend=0.0, svg_path='M 480.0,120.0 L 540.0,120.0 L 540.0,168.0 L 480.0,168.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[480.0, 120.0], [540.0, 120.0], [540.0, 168.0], [480.0, 168.0], [480.0, 120.0]]]}, is_active=True)",
+        "TableInfo(id='table-004', label='4', capacity=4, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=660.0, y=120.0, centroid_x=700.0, centroid_y=152.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 660.0,120.0 L 740.0,120.0 L 740.0,184.0 L 660.0,184.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[660.0, 120.0], [740.0, 120.0], [740.0, 184.0], [660.0, 184.0], [660.0, 120.0]]]}, is_active=True)",
+        "TableInfo(id='table-005', label='5', capacity=2, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=840.0, y=120.0, centroid_x=870.0, centroid_y=144.0, rotation=0.0, width=60, height=48, smoking=False, accessible=False, min_spend=0.0, svg_path='M 840.0,120.0 L 900.0,120.0 L 900.0,168.0 L 840.0,168.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[840.0, 120.0], [900.0, 120.0], [900.0, 168.0], [840.0, 168.0], [840.0, 120.0]]]}, is_active=True)",
+        "TableInfo(id='table-006', label='6', capacity=4, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=1020.0, y=120.0, centroid_x=1060.0, centroid_y=152.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 1020.0,120.0 L 1100.0,120.0 L 1100.0,184.0 L 1020.0,184.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[1020.0, 120.0], [1100.0, 120.0], [1100.0, 184.0], [1020.0, 184.0], [1020.0, 120.0]]]}, is_active=True)",
+        "TableInfo(id='table-007', label='7', capacity=4, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=120.0, y=200.0, centroid_x=160.0, centroid_y=232.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 120.0,200.0 L 200.0,200.0 L 200.0,264.0 L 120.0,264.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[120.0, 200.0], [200.0, 200.0], [200.0, 264.0], [120.0, 264.0], [120.0, 200.0]]]}, is_active=True)",
+        "TableInfo(id='table-008', label='8', capacity=6, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=300.0, y=200.0, centroid_x=350.0, centroid_y=240.0, rotation=0.0, width=100, height=80, smoking=False, accessible=False, min_spend=0.0, svg_path='M 300.0,200.0 L 400.0,200.0 L 400.0,280.0 L 300.0,280.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[300.0, 200.0], [400.0, 200.0], [400.0, 280.0], [300.0, 280.0], [300.0, 200.0]]]}, is_active=True)",
+        "TableInfo(id='table-009', label='9', capacity=4, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=480.0, y=200.0, centroid_x=520.0, centroid_y=232.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 480.0,200.0 L 560.0,200.0 L 560.0,264.0 L 480.0,264.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[480.0, 200.0], [560.0, 200.0], [560.0, 264.0], [480.0, 264.0], [480.0, 200.0]]]}, is_active=True)",
+        "TableInfo(id='table-010', label='10', capacity=6, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=660.0, y=200.0, centroid_x=710.0, centroid_y=240.0, rotation=0.0, width=100, height=80, smoking=False, accessible=False, min_spend=0.0, svg_path='M 660.0,200.0 L 760.0,200.0 L 760.0,280.0 L 660.0,280.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[660.0, 200.0], [760.0, 200.0], [760.0, 280.0], [660.0, 280.0], [660.0, 200.0]]]}, is_active=True)",
+        "TableInfo(id='table-011', label='11', capacity=4, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=840.0, y=200.0, centroid_x=880.0, centroid_y=232.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 840.0,200.0 L 920.0,200.0 L 920.0,264.0 L 840.0,264.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[840.0, 200.0], [920.0, 200.0], [920.0, 264.0], [840.0, 264.0], [840.0, 200.0]]]}, is_active=True)",
+        "TableInfo(id='table-012', label='12', capacity=6, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=1020.0, y=200.0, centroid_x=1070.0, centroid_y=240.0, rotation=0.0, width=100, height=80, smoking=False, accessible=False, min_spend=0.0, svg_path='M 1020.0,200.0 L 1120.0,200.0 L 1120.0,280.0 L 1020.0,280.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[1020.0, 200.0], [1120.0, 200.0], [1120.0, 280.0], [1020.0, 280.0], [1020.0, 200.0]]]}, is_active=True)",
+        "TableInfo(id='table-014', label='14', capacity=2, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=120.0, y=280.0, centroid_x=150.0, centroid_y=304.0, rotation=0.0, width=60, height=48, smoking=False, accessible=False, min_spend=0.0, svg_path='M 120.0,280.0 L 180.0,280.0 L 180.0,328.0 L 120.0,328.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[120.0, 280.0], [180.0, 280.0], [180.0, 328.0], [120.0, 328.0], [120.0, 280.0]]]}, is_active=True)",
+        "TableInfo(id='table-015', label='15', capacity=4, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=300.0, y=280.0, centroid_x=340.0, centroid_y=312.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 300.0,280.0 L 380.0,280.0 L 380.0,344.0 L 300.0,344.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[300.0, 280.0], [380.0, 280.0], [380.0, 344.0], [300.0, 344.0], [300.0, 280.0]]]}, is_active=True)",
+        "TableInfo(id='table-016', label='16', capacity=2, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=480.0, y=280.0, centroid_x=510.0, centroid_y=304.0, rotation=0.0, width=60, height=48, smoking=False, accessible=False, min_spend=0.0, svg_path='M 480.0,280.0 L 540.0,280.0 L 540.0,328.0 L 480.0,328.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[480.0, 280.0], [540.0, 280.0], [540.0, 328.0], [480.0, 328.0], [480.0, 280.0]]]}, is_active=True)",
+        "TableInfo(id='table-017', label='17', capacity=4, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=660.0, y=280.0, centroid_x=700.0, centroid_y=312.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 660.0,280.0 L 740.0,280.0 L 740.0,344.0 L 660.0,344.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[660.0, 280.0], [740.0, 280.0], [740.0, 344.0], [660.0, 344.0], [660.0, 280.0]]]}, is_active=True)",
+        "TableInfo(id='table-018', label='18', capacity=2, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=840.0, y=280.0, centroid_x=870.0, centroid_y=304.0, rotation=0.0, width=60, height=48, smoking=False, accessible=False, min_spend=0.0, svg_path='M 840.0,280.0 L 900.0,280.0 L 900.0,328.0 L 840.0,328.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[840.0, 280.0], [900.0, 280.0], [900.0, 328.0], [840.0, 328.0], [840.0, 280.0]]]}, is_active=True)",
+        "TableInfo(id='table-019', label='19', capacity=4, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=1020.0, y=280.0, centroid_x=1060.0, centroid_y=312.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 1020.0,280.0 L 1100.0,280.0 L 1100.0,344.0 L 1020.0,344.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[1020.0, 280.0], [1100.0, 280.0], [1100.0, 344.0], [1020.0, 344.0], [1020.0, 280.0]]]}, is_active=True)",
+        "TableInfo(id='table-020', label='20', capacity=4, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=180.0, y=360.0, centroid_x=220.0, centroid_y=392.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 180.0,360.0 L 260.0,360.0 L 260.0,424.0 L 180.0,424.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[180.0, 360.0], [260.0, 360.0], [260.0, 424.0], [180.0, 424.0], [180.0, 360.0]]]}, is_active=True)",
+        "TableInfo(id='table-021', label='21', capacity=4, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=420.0, y=360.0, centroid_x=460.0, centroid_y=392.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 420.0,360.0 L 500.0,360.0 L 500.0,424.0 L 420.0,424.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[420.0, 360.0], [500.0, 360.0], [500.0, 424.0], [420.0, 424.0], [420.0, 360.0]]]}, is_active=True)",
+        "TableInfo(id='table-022', label='22', capacity=4, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=660.0, y=360.0, centroid_x=700.0, centroid_y=392.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 660.0,360.0 L 740.0,360.0 L 740.0,424.0 L 660.0,424.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[660.0, 360.0], [740.0, 360.0], [740.0, 424.0], [660.0, 424.0], [660.0, 360.0]]]}, is_active=True)",
+        "TableInfo(id='table-031', label='31', capacity=4, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=1020.0, y=160.0, centroid_x=1060.0, centroid_y=192.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 1020.0,160.0 L 1100.0,160.0 L 1100.0,224.0 L 1020.0,224.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[1020.0, 160.0], [1100.0, 160.0], [1100.0, 224.0], [1020.0, 224.0], [1020.0, 160.0]]]}, is_active=True)",
+        "TableInfo(id='table-032', label='32', capacity=4, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=1020.0, y=256.0, centroid_x=1060.0, centroid_y=288.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 1020.0,256.0 L 1100.0,256.0 L 1100.0,320.0 L 1020.0,320.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[1020.0, 256.0], [1100.0, 256.0], [1100.0, 320.0], [1020.0, 320.0], [1020.0, 256.0]]]}, is_active=True)",
+        "TableInfo(id='table-033', label='33', capacity=4, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=1020.0, y=352.0, centroid_x=1060.0, centroid_y=384.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 1020.0,352.0 L 1100.0,352.0 L 1100.0,416.0 L 1020.0,416.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[1020.0, 352.0], [1100.0, 352.0], [1100.0, 416.0], [1020.0, 416.0], [1020.0, 352.0]]]}, is_active=True)",
+        "TableInfo(id='table-034', label='34', capacity=4, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=1020.0, y=448.0, centroid_x=1060.0, centroid_y=480.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 1020.0,448.0 L 1100.0,448.0 L 1100.0,512.0 L 1020.0,512.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[1020.0, 448.0], [1100.0, 448.0], [1100.0, 512.0], [1020.0, 512.0], [1020.0, 448.0]]]}, is_active=True)",
+        "TableInfo(id='table-035', label='35', capacity=4, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=1020.0, y=544.0, centroid_x=1060.0, centroid_y=576.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 1020.0,544.0 L 1100.0,544.0 L 1100.0,608.0 L 1020.0,608.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[1020.0, 544.0], [1100.0, 544.0], [1100.0, 608.0], [1020.0, 608.0], [1020.0, 544.0]]]}, is_active=True)",
+        "TableInfo(id='table-023', label='23', capacity=6, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='circle', x=540.0, y=400.0, centroid_x=590.0, centroid_y=450.0, rotation=0.0, width=100, height=100, smoking=False, accessible=False, min_spend=0.0, svg_path='M 540.0,450.0 A 50.0,50.0 0 1,1 640.0,450.0 A 50.0,50.0 0 1,1 540.0,450.0', geometry={'type': 'Circle', 'center': [590.0, 450.0], 'radius': 50.0}, is_active=True)",
+        "TableInfo(id='table-024', label='24', capacity=6, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='circle', x=684.0, y=400.0, centroid_x=734.0, centroid_y=450.0, rotation=0.0, width=100, height=100, smoking=False, accessible=False, min_spend=0.0, svg_path='M 684.0,450.0 A 50.0,50.0 0 1,1 784.0,450.0 A 50.0,50.0 0 1,1 684.0,450.0', geometry={'type': 'Circle', 'center': [734.0, 450.0], 'radius': 50.0}, is_active=True)",
+        "TableInfo(id='table-025', label='25', capacity=6, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='circle', x=828.0, y=400.0, centroid_x=878.0, centroid_y=450.0, rotation=0.0, width=100, height=100, smoking=False, accessible=False, min_spend=0.0, svg_path='M 828.0,450.0 A 50.0,50.0 0 1,1 928.0,450.0 A 50.0,50.0 0 1,1 828.0,450.0', geometry={'type': 'Circle', 'center': [878.0, 450.0], 'radius': 50.0}, is_active=True)",
+        "TableInfo(id='table-026', label='26', capacity=6, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='circle', x=972.0, y=400.0, centroid_x=1022.0, centroid_y=450.0, rotation=0.0, width=100, height=100, smoking=False, accessible=False, min_spend=0.0, svg_path='M 972.0,450.0 A 50.0,50.0 0 1,1 1072.0,450.0 A 50.0,50.0 0 1,1 972.0,450.0', geometry={'type': 'Circle', 'center': [1022.0, 450.0], 'radius': 50.0}, is_active=True)",
+        "TableInfo(id='table-027', label='27', capacity=6, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='circle', x=540.0, y=520.0, centroid_x=590.0, centroid_y=570.0, rotation=0.0, width=100, height=100, smoking=False, accessible=False, min_spend=0.0, svg_path='M 540.0,570.0 A 50.0,50.0 0 1,1 640.0,570.0 A 50.0,50.0 0 1,1 540.0,570.0', geometry={'type': 'Circle', 'center': [590.0, 570.0], 'radius': 50.0}, is_active=True)",
+        "TableInfo(id='table-028', label='28', capacity=6, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='circle', x=684.0, y=520.0, centroid_x=734.0, centroid_y=570.0, rotation=0.0, width=100, height=100, smoking=False, accessible=False, min_spend=0.0, svg_path='M 684.0,570.0 A 50.0,50.0 0 1,1 784.0,570.0 A 50.0,50.0 0 1,1 684.0,570.0', geometry={'type': 'Circle', 'center': [734.0, 570.0], 'radius': 50.0}, is_active=True)",
+        "TableInfo(id='table-029', label='29', capacity=6, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='circle', x=828.0, y=520.0, centroid_x=878.0, centroid_y=570.0, rotation=0.0, width=100, height=100, smoking=False, accessible=False, min_spend=0.0, svg_path='M 828.0,570.0 A 50.0,50.0 0 1,1 928.0,570.0 A 50.0,50.0 0 1,1 828.0,570.0', geometry={'type': 'Circle', 'center': [878.0, 570.0], 'radius': 50.0}, is_active=True)",
+        "TableInfo(id='table-030', label='30', capacity=6, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='circle', x=972.0, y=520.0, centroid_x=1022.0, centroid_y=570.0, rotation=0.0, width=100, height=100, smoking=False, accessible=False, min_spend=0.0, svg_path='M 972.0,570.0 A 50.0,50.0 0 1,1 1072.0,570.0 A 50.0,50.0 0 1,1 972.0,570.0', geometry={'type': 'Circle', 'center': [1022.0, 570.0], 'radius': 50.0}, is_active=True)",
+        "TableInfo(id='table-036', label='36', capacity=2, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=60.0, y=440.0, centroid_x=90.0, centroid_y=464.0, rotation=0.0, width=60, height=48, smoking=False, accessible=False, min_spend=0.0, svg_path='M 60.0,440.0 L 120.0,440.0 L 120.0,488.0 L 60.0,488.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[60.0, 440.0], [120.0, 440.0], [120.0, 488.0], [60.0, 488.0], [60.0, 440.0]]]}, is_active=True)",
+        "TableInfo(id='table-037', label='37', capacity=4, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=204.0, y=440.0, centroid_x=244.0, centroid_y=472.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 204.0,440.0 L 284.0,440.0 L 284.0,504.0 L 204.0,504.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[204.0, 440.0], [284.0, 440.0], [284.0, 504.0], [204.0, 504.0], [204.0, 440.0]]]}, is_active=True)",
+        "TableInfo(id='table-038', label='38', capacity=4, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=348.0, y=440.0, centroid_x=388.0, centroid_y=472.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 348.0,440.0 L 428.0,440.0 L 428.0,504.0 L 348.0,504.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[348.0, 440.0], [428.0, 440.0], [428.0, 504.0], [348.0, 504.0], [348.0, 440.0]]]}, is_active=True)",
+        "TableInfo(id='table-039', label='39', capacity=2, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=492.0, y=440.0, centroid_x=522.0, centroid_y=464.0, rotation=0.0, width=60, height=48, smoking=False, accessible=False, min_spend=0.0, svg_path='M 492.0,440.0 L 552.0,440.0 L 552.0,488.0 L 492.0,488.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[492.0, 440.0], [552.0, 440.0], [552.0, 488.0], [492.0, 488.0], [492.0, 440.0]]]}, is_active=True)",
+        "TableInfo(id='table-040', label='40', capacity=4, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=60.0, y=560.0, centroid_x=100.0, centroid_y=592.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 60.0,560.0 L 140.0,560.0 L 140.0,624.0 L 60.0,624.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[60.0, 560.0], [140.0, 560.0], [140.0, 624.0], [60.0, 624.0], [60.0, 560.0]]]}, is_active=True)",
+        "TableInfo(id='table-041', label='41', capacity=4, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=204.0, y=560.0, centroid_x=244.0, centroid_y=592.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 204.0,560.0 L 284.0,560.0 L 284.0,624.0 L 204.0,624.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[204.0, 560.0], [284.0, 560.0], [284.0, 624.0], [204.0, 624.0], [204.0, 560.0]]]}, is_active=True)",
+        "TableInfo(id='table-042', label='42', capacity=2, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=348.0, y=560.0, centroid_x=378.0, centroid_y=584.0, rotation=0.0, width=60, height=48, smoking=False, accessible=False, min_spend=0.0, svg_path='M 348.0,560.0 L 408.0,560.0 L 408.0,608.0 L 348.0,608.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[348.0, 560.0], [408.0, 560.0], [408.0, 608.0], [348.0, 608.0], [348.0, 560.0]]]}, is_active=True)",
+        "TableInfo(id='table-043', label='43', capacity=4, section='Main Dining (Sections 1-4)', zone='Main Dining', shape='rectangle', x=492.0, y=560.0, centroid_x=532.0, centroid_y=592.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 492.0,560.0 L 572.0,560.0 L 572.0,624.0 L 492.0,624.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[492.0, 560.0], [572.0, 560.0], [572.0, 624.0], [492.0, 624.0], [492.0, 560.0]]]}, is_active=True)"
+      ]
+    },
+    "section_5_6": {
+      "name": "Smoking Area (Sections 5-6)",
+      "tables": [
+        "TableInfo(id='table-044', label='44', capacity=2, section='Smoking Area (Sections 5-6)', zone='Smoking Area', shape='circle', x=600.0, y=480.0, centroid_x=630.0, centroid_y=510.0, rotation=0.0, width=60, height=60, smoking=True, accessible=False, min_spend=0.0, svg_path='M 600.0,510.0 A 30.0,30.0 0 1,1 660.0,510.0 A 30.0,30.0 0 1,1 600.0,510.0', geometry={'type': 'Circle', 'center': [630.0, 510.0], 'radius': 30.0}, is_active=True)",
+        "TableInfo(id='table-045', label='45', capacity=4, section='Smoking Area (Sections 5-6)', zone='Smoking Area', shape='circle', x=696.0, y=480.0, centroid_x=736.0, centroid_y=520.0, rotation=0.0, width=80, height=80, smoking=True, accessible=False, min_spend=0.0, svg_path='M 696.0,520.0 A 40.0,40.0 0 1,1 776.0,520.0 A 40.0,40.0 0 1,1 696.0,520.0', geometry={'type': 'Circle', 'center': [736.0, 520.0], 'radius': 40.0}, is_active=True)",
+        "TableInfo(id='table-046', label='46', capacity=4, section='Smoking Area (Sections 5-6)', zone='Smoking Area', shape='circle', x=792.0, y=480.0, centroid_x=832.0, centroid_y=520.0, rotation=0.0, width=80, height=80, smoking=True, accessible=False, min_spend=0.0, svg_path='M 792.0,520.0 A 40.0,40.0 0 1,1 872.0,520.0 A 40.0,40.0 0 1,1 792.0,520.0', geometry={'type': 'Circle', 'center': [832.0, 520.0], 'radius': 40.0}, is_active=True)",
+        "TableInfo(id='table-047', label='47', capacity=2, section='Smoking Area (Sections 5-6)', zone='Smoking Area', shape='circle', x=888.0, y=480.0, centroid_x=918.0, centroid_y=510.0, rotation=0.0, width=60, height=60, smoking=True, accessible=False, min_spend=0.0, svg_path='M 888.0,510.0 A 30.0,30.0 0 1,1 948.0,510.0 A 30.0,30.0 0 1,1 888.0,510.0', geometry={'type': 'Circle', 'center': [918.0, 510.0], 'radius': 30.0}, is_active=True)",
+        "TableInfo(id='table-048', label='48', capacity=4, section='Smoking Area (Sections 5-6)', zone='Smoking Area', shape='circle', x=984.0, y=480.0, centroid_x=1024.0, centroid_y=520.0, rotation=0.0, width=80, height=80, smoking=True, accessible=False, min_spend=0.0, svg_path='M 984.0,520.0 A 40.0,40.0 0 1,1 1064.0,520.0 A 40.0,40.0 0 1,1 984.0,520.0', geometry={'type': 'Circle', 'center': [1024.0, 520.0], 'radius': 40.0}, is_active=True)",
+        "TableInfo(id='table-049', label='49', capacity=4, section='Smoking Area (Sections 5-6)', zone='Smoking Area', shape='circle', x=1080.0, y=480.0, centroid_x=1120.0, centroid_y=520.0, rotation=0.0, width=80, height=80, smoking=True, accessible=False, min_spend=0.0, svg_path='M 1080.0,520.0 A 40.0,40.0 0 1,1 1160.0,520.0 A 40.0,40.0 0 1,1 1080.0,520.0', geometry={'type': 'Circle', 'center': [1120.0, 520.0], 'radius': 40.0}, is_active=True)",
+        "TableInfo(id='table-050', label='50', capacity=2, section='Smoking Area (Sections 5-6)', zone='Smoking Area', shape='circle', x=600.0, y=576.0, centroid_x=630.0, centroid_y=606.0, rotation=0.0, width=60, height=60, smoking=True, accessible=False, min_spend=0.0, svg_path='M 600.0,606.0 A 30.0,30.0 0 1,1 660.0,606.0 A 30.0,30.0 0 1,1 600.0,606.0', geometry={'type': 'Circle', 'center': [630.0, 606.0], 'radius': 30.0}, is_active=True)",
+        "TableInfo(id='table-051', label='51', capacity=4, section='Smoking Area (Sections 5-6)', zone='Smoking Area', shape='circle', x=696.0, y=576.0, centroid_x=736.0, centroid_y=616.0, rotation=0.0, width=80, height=80, smoking=True, accessible=False, min_spend=0.0, svg_path='M 696.0,616.0 A 40.0,40.0 0 1,1 776.0,616.0 A 40.0,40.0 0 1,1 696.0,616.0', geometry={'type': 'Circle', 'center': [736.0, 616.0], 'radius': 40.0}, is_active=True)",
+        "TableInfo(id='table-052', label='52', capacity=4, section='Smoking Area (Sections 5-6)', zone='Smoking Area', shape='circle', x=792.0, y=576.0, centroid_x=832.0, centroid_y=616.0, rotation=0.0, width=80, height=80, smoking=True, accessible=False, min_spend=0.0, svg_path='M 792.0,616.0 A 40.0,40.0 0 1,1 872.0,616.0 A 40.0,40.0 0 1,1 792.0,616.0', geometry={'type': 'Circle', 'center': [832.0, 616.0], 'radius': 40.0}, is_active=True)",
+        "TableInfo(id='table-053', label='53', capacity=2, section='Smoking Area (Sections 5-6)', zone='Smoking Area', shape='circle', x=888.0, y=576.0, centroid_x=918.0, centroid_y=606.0, rotation=0.0, width=60, height=60, smoking=True, accessible=False, min_spend=0.0, svg_path='M 888.0,606.0 A 30.0,30.0 0 1,1 948.0,606.0 A 30.0,30.0 0 1,1 888.0,606.0', geometry={'type': 'Circle', 'center': [918.0, 606.0], 'radius': 30.0}, is_active=True)",
+        "TableInfo(id='table-054', label='54', capacity=4, section='Smoking Area (Sections 5-6)', zone='Smoking Area', shape='circle', x=984.0, y=576.0, centroid_x=1024.0, centroid_y=616.0, rotation=0.0, width=80, height=80, smoking=True, accessible=False, min_spend=0.0, svg_path='M 984.0,616.0 A 40.0,40.0 0 1,1 1064.0,616.0 A 40.0,40.0 0 1,1 984.0,616.0', geometry={'type': 'Circle', 'center': [1024.0, 616.0], 'radius': 40.0}, is_active=True)",
+        "TableInfo(id='table-055', label='55', capacity=4, section='Smoking Area (Sections 5-6)', zone='Smoking Area', shape='circle', x=1080.0, y=576.0, centroid_x=1120.0, centroid_y=616.0, rotation=0.0, width=80, height=80, smoking=True, accessible=False, min_spend=0.0, svg_path='M 1080.0,616.0 A 40.0,40.0 0 1,1 1160.0,616.0 A 40.0,40.0 0 1,1 1080.0,616.0', geometry={'type': 'Circle', 'center': [1120.0, 616.0], 'radius': 40.0}, is_active=True)"
+      ]
+    },
+    "section_7": {
+      "name": "Sea View (Section 7)",
+      "tables": [
+        "TableInfo(id='table-056', label='56', capacity=2, section='Sea View (Section 7)', zone='Sea View', shape='rectangle', x=120.0, y=600.0, centroid_x=150.0, centroid_y=624.0, rotation=0.0, width=60, height=48, smoking=False, accessible=False, min_spend=0.0, svg_path='M 120.0,600.0 L 180.0,600.0 L 180.0,648.0 L 120.0,648.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[120.0, 600.0], [180.0, 600.0], [180.0, 648.0], [120.0, 648.0], [120.0, 600.0]]]}, is_active=True)",
+        "TableInfo(id='table-057', label='57', capacity=4, section='Sea View (Section 7)', zone='Sea View', shape='rectangle', x=300.0, y=600.0, centroid_x=340.0, centroid_y=632.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 300.0,600.0 L 380.0,600.0 L 380.0,664.0 L 300.0,664.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[300.0, 600.0], [380.0, 600.0], [380.0, 664.0], [300.0, 664.0], [300.0, 600.0]]]}, is_active=True)",
+        "TableInfo(id='table-058', label='58', capacity=2, section='Sea View (Section 7)', zone='Sea View', shape='rectangle', x=480.0, y=600.0, centroid_x=510.0, centroid_y=624.0, rotation=0.0, width=60, height=48, smoking=False, accessible=False, min_spend=0.0, svg_path='M 480.0,600.0 L 540.0,600.0 L 540.0,648.0 L 480.0,648.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[480.0, 600.0], [540.0, 600.0], [540.0, 648.0], [480.0, 648.0], [480.0, 600.0]]]}, is_active=True)",
+        "TableInfo(id='table-059', label='59', capacity=4, section='Sea View (Section 7)', zone='Sea View', shape='rectangle', x=660.0, y=600.0, centroid_x=700.0, centroid_y=632.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 660.0,600.0 L 740.0,600.0 L 740.0,664.0 L 660.0,664.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[660.0, 600.0], [740.0, 600.0], [740.0, 664.0], [660.0, 664.0], [660.0, 600.0]]]}, is_active=True)",
+        "TableInfo(id='table-060', label='60', capacity=2, section='Sea View (Section 7)', zone='Sea View', shape='rectangle', x=840.0, y=600.0, centroid_x=870.0, centroid_y=624.0, rotation=0.0, width=60, height=48, smoking=False, accessible=False, min_spend=0.0, svg_path='M 840.0,600.0 L 900.0,600.0 L 900.0,648.0 L 840.0,648.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[840.0, 600.0], [900.0, 600.0], [900.0, 648.0], [840.0, 648.0], [840.0, 600.0]]]}, is_active=True)",
+        "TableInfo(id='table-061', label='61', capacity=4, section='Sea View (Section 7)', zone='Sea View', shape='rectangle', x=1020.0, y=600.0, centroid_x=1060.0, centroid_y=632.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 1020.0,600.0 L 1100.0,600.0 L 1100.0,664.0 L 1020.0,664.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[1020.0, 600.0], [1100.0, 600.0], [1100.0, 664.0], [1020.0, 664.0], [1020.0, 600.0]]]}, is_active=True)",
+        "TableInfo(id='table-062', label='62', capacity=2, section='Sea View (Section 7)', zone='Sea View', shape='rectangle', x=120.0, y=720.0, centroid_x=150.0, centroid_y=744.0, rotation=0.0, width=60, height=48, smoking=False, accessible=False, min_spend=0.0, svg_path='M 120.0,720.0 L 180.0,720.0 L 180.0,768.0 L 120.0,768.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[120.0, 720.0], [180.0, 720.0], [180.0, 768.0], [120.0, 768.0], [120.0, 720.0]]]}, is_active=True)",
+        "TableInfo(id='table-063', label='63', capacity=4, section='Sea View (Section 7)', zone='Sea View', shape='rectangle', x=300.0, y=720.0, centroid_x=340.0, centroid_y=752.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 300.0,720.0 L 380.0,720.0 L 380.0,784.0 L 300.0,784.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[300.0, 720.0], [380.0, 720.0], [380.0, 784.0], [300.0, 784.0], [300.0, 720.0]]]}, is_active=True)",
+        "TableInfo(id='table-064', label='64', capacity=2, section='Sea View (Section 7)', zone='Sea View', shape='rectangle', x=480.0, y=720.0, centroid_x=510.0, centroid_y=744.0, rotation=0.0, width=60, height=48, smoking=False, accessible=False, min_spend=0.0, svg_path='M 480.0,720.0 L 540.0,720.0 L 540.0,768.0 L 480.0,768.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[480.0, 720.0], [540.0, 720.0], [540.0, 768.0], [480.0, 768.0], [480.0, 720.0]]]}, is_active=True)",
+        "TableInfo(id='table-065', label='65', capacity=4, section='Sea View (Section 7)', zone='Sea View', shape='rectangle', x=660.0, y=720.0, centroid_x=700.0, centroid_y=752.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 660.0,720.0 L 740.0,720.0 L 740.0,784.0 L 660.0,784.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[660.0, 720.0], [740.0, 720.0], [740.0, 784.0], [660.0, 784.0], [660.0, 720.0]]]}, is_active=True)",
+        "TableInfo(id='table-066', label='66', capacity=2, section='Sea View (Section 7)', zone='Sea View', shape='rectangle', x=840.0, y=720.0, centroid_x=870.0, centroid_y=744.0, rotation=0.0, width=60, height=48, smoking=False, accessible=False, min_spend=0.0, svg_path='M 840.0,720.0 L 900.0,720.0 L 900.0,768.0 L 840.0,768.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[840.0, 720.0], [900.0, 720.0], [900.0, 768.0], [840.0, 768.0], [840.0, 720.0]]]}, is_active=True)",
+        "TableInfo(id='table-067', label='67', capacity=4, section='Sea View (Section 7)', zone='Sea View', shape='rectangle', x=1020.0, y=720.0, centroid_x=1060.0, centroid_y=752.0, rotation=0.0, width=80, height=64, smoking=False, accessible=False, min_spend=0.0, svg_path='M 1020.0,720.0 L 1100.0,720.0 L 1100.0,784.0 L 1020.0,784.0 Z', geometry={'type': 'Polygon', 'coordinates': [[[1020.0, 720.0], [1100.0, 720.0], [1100.0, 784.0], [1020.0, 784.0], [1020.0, 720.0]]]}, is_active=True)"
+      ]
+    }
+  },
+  "tables": [
+    {
+      "id": "table-001",
+      "label": "1",
+      "capacity": 2,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 120.0,
+      "y": 120.0,
+      "centroid_x": 150.0,
+      "centroid_y": 144.0,
+      "rotation": 0.0,
+      "width": 60,
+      "height": 48,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 120.0,120.0 L 180.0,120.0 L 180.0,168.0 L 120.0,168.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.0,
+              120.0
+            ],
+            [
+              180.0,
+              120.0
+            ],
+            [
+              180.0,
+              168.0
+            ],
+            [
+              120.0,
+              168.0
+            ],
+            [
+              120.0,
+              120.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-002",
+      "label": "2",
+      "capacity": 4,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 300.0,
+      "y": 120.0,
+      "centroid_x": 340.0,
+      "centroid_y": 152.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 300.0,120.0 L 380.0,120.0 L 380.0,184.0 L 300.0,184.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              300.0,
+              120.0
+            ],
+            [
+              380.0,
+              120.0
+            ],
+            [
+              380.0,
+              184.0
+            ],
+            [
+              300.0,
+              184.0
+            ],
+            [
+              300.0,
+              120.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-003",
+      "label": "3",
+      "capacity": 2,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 480.0,
+      "y": 120.0,
+      "centroid_x": 510.0,
+      "centroid_y": 144.0,
+      "rotation": 0.0,
+      "width": 60,
+      "height": 48,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 480.0,120.0 L 540.0,120.0 L 540.0,168.0 L 480.0,168.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              480.0,
+              120.0
+            ],
+            [
+              540.0,
+              120.0
+            ],
+            [
+              540.0,
+              168.0
+            ],
+            [
+              480.0,
+              168.0
+            ],
+            [
+              480.0,
+              120.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-004",
+      "label": "4",
+      "capacity": 4,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 660.0,
+      "y": 120.0,
+      "centroid_x": 700.0,
+      "centroid_y": 152.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 660.0,120.0 L 740.0,120.0 L 740.0,184.0 L 660.0,184.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              660.0,
+              120.0
+            ],
+            [
+              740.0,
+              120.0
+            ],
+            [
+              740.0,
+              184.0
+            ],
+            [
+              660.0,
+              184.0
+            ],
+            [
+              660.0,
+              120.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-005",
+      "label": "5",
+      "capacity": 2,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 840.0,
+      "y": 120.0,
+      "centroid_x": 870.0,
+      "centroid_y": 144.0,
+      "rotation": 0.0,
+      "width": 60,
+      "height": 48,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 840.0,120.0 L 900.0,120.0 L 900.0,168.0 L 840.0,168.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              840.0,
+              120.0
+            ],
+            [
+              900.0,
+              120.0
+            ],
+            [
+              900.0,
+              168.0
+            ],
+            [
+              840.0,
+              168.0
+            ],
+            [
+              840.0,
+              120.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-006",
+      "label": "6",
+      "capacity": 4,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 1020.0,
+      "y": 120.0,
+      "centroid_x": 1060.0,
+      "centroid_y": 152.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 1020.0,120.0 L 1100.0,120.0 L 1100.0,184.0 L 1020.0,184.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1020.0,
+              120.0
+            ],
+            [
+              1100.0,
+              120.0
+            ],
+            [
+              1100.0,
+              184.0
+            ],
+            [
+              1020.0,
+              184.0
+            ],
+            [
+              1020.0,
+              120.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-007",
+      "label": "7",
+      "capacity": 4,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 120.0,
+      "y": 200.0,
+      "centroid_x": 160.0,
+      "centroid_y": 232.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 120.0,200.0 L 200.0,200.0 L 200.0,264.0 L 120.0,264.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.0,
+              200.0
+            ],
+            [
+              200.0,
+              200.0
+            ],
+            [
+              200.0,
+              264.0
+            ],
+            [
+              120.0,
+              264.0
+            ],
+            [
+              120.0,
+              200.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-008",
+      "label": "8",
+      "capacity": 6,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 300.0,
+      "y": 200.0,
+      "centroid_x": 350.0,
+      "centroid_y": 240.0,
+      "rotation": 0.0,
+      "width": 100,
+      "height": 80,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 300.0,200.0 L 400.0,200.0 L 400.0,280.0 L 300.0,280.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              300.0,
+              200.0
+            ],
+            [
+              400.0,
+              200.0
+            ],
+            [
+              400.0,
+              280.0
+            ],
+            [
+              300.0,
+              280.0
+            ],
+            [
+              300.0,
+              200.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-009",
+      "label": "9",
+      "capacity": 4,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 480.0,
+      "y": 200.0,
+      "centroid_x": 520.0,
+      "centroid_y": 232.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 480.0,200.0 L 560.0,200.0 L 560.0,264.0 L 480.0,264.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              480.0,
+              200.0
+            ],
+            [
+              560.0,
+              200.0
+            ],
+            [
+              560.0,
+              264.0
+            ],
+            [
+              480.0,
+              264.0
+            ],
+            [
+              480.0,
+              200.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-010",
+      "label": "10",
+      "capacity": 6,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 660.0,
+      "y": 200.0,
+      "centroid_x": 710.0,
+      "centroid_y": 240.0,
+      "rotation": 0.0,
+      "width": 100,
+      "height": 80,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 660.0,200.0 L 760.0,200.0 L 760.0,280.0 L 660.0,280.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              660.0,
+              200.0
+            ],
+            [
+              760.0,
+              200.0
+            ],
+            [
+              760.0,
+              280.0
+            ],
+            [
+              660.0,
+              280.0
+            ],
+            [
+              660.0,
+              200.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-011",
+      "label": "11",
+      "capacity": 4,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 840.0,
+      "y": 200.0,
+      "centroid_x": 880.0,
+      "centroid_y": 232.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 840.0,200.0 L 920.0,200.0 L 920.0,264.0 L 840.0,264.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              840.0,
+              200.0
+            ],
+            [
+              920.0,
+              200.0
+            ],
+            [
+              920.0,
+              264.0
+            ],
+            [
+              840.0,
+              264.0
+            ],
+            [
+              840.0,
+              200.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-012",
+      "label": "12",
+      "capacity": 6,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 1020.0,
+      "y": 200.0,
+      "centroid_x": 1070.0,
+      "centroid_y": 240.0,
+      "rotation": 0.0,
+      "width": 100,
+      "height": 80,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 1020.0,200.0 L 1120.0,200.0 L 1120.0,280.0 L 1020.0,280.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1020.0,
+              200.0
+            ],
+            [
+              1120.0,
+              200.0
+            ],
+            [
+              1120.0,
+              280.0
+            ],
+            [
+              1020.0,
+              280.0
+            ],
+            [
+              1020.0,
+              200.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-014",
+      "label": "14",
+      "capacity": 2,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 120.0,
+      "y": 280.0,
+      "centroid_x": 150.0,
+      "centroid_y": 304.0,
+      "rotation": 0.0,
+      "width": 60,
+      "height": 48,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 120.0,280.0 L 180.0,280.0 L 180.0,328.0 L 120.0,328.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.0,
+              280.0
+            ],
+            [
+              180.0,
+              280.0
+            ],
+            [
+              180.0,
+              328.0
+            ],
+            [
+              120.0,
+              328.0
+            ],
+            [
+              120.0,
+              280.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-015",
+      "label": "15",
+      "capacity": 4,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 300.0,
+      "y": 280.0,
+      "centroid_x": 340.0,
+      "centroid_y": 312.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 300.0,280.0 L 380.0,280.0 L 380.0,344.0 L 300.0,344.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              300.0,
+              280.0
+            ],
+            [
+              380.0,
+              280.0
+            ],
+            [
+              380.0,
+              344.0
+            ],
+            [
+              300.0,
+              344.0
+            ],
+            [
+              300.0,
+              280.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-016",
+      "label": "16",
+      "capacity": 2,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 480.0,
+      "y": 280.0,
+      "centroid_x": 510.0,
+      "centroid_y": 304.0,
+      "rotation": 0.0,
+      "width": 60,
+      "height": 48,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 480.0,280.0 L 540.0,280.0 L 540.0,328.0 L 480.0,328.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              480.0,
+              280.0
+            ],
+            [
+              540.0,
+              280.0
+            ],
+            [
+              540.0,
+              328.0
+            ],
+            [
+              480.0,
+              328.0
+            ],
+            [
+              480.0,
+              280.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-017",
+      "label": "17",
+      "capacity": 4,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 660.0,
+      "y": 280.0,
+      "centroid_x": 700.0,
+      "centroid_y": 312.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 660.0,280.0 L 740.0,280.0 L 740.0,344.0 L 660.0,344.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              660.0,
+              280.0
+            ],
+            [
+              740.0,
+              280.0
+            ],
+            [
+              740.0,
+              344.0
+            ],
+            [
+              660.0,
+              344.0
+            ],
+            [
+              660.0,
+              280.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-018",
+      "label": "18",
+      "capacity": 2,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 840.0,
+      "y": 280.0,
+      "centroid_x": 870.0,
+      "centroid_y": 304.0,
+      "rotation": 0.0,
+      "width": 60,
+      "height": 48,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 840.0,280.0 L 900.0,280.0 L 900.0,328.0 L 840.0,328.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              840.0,
+              280.0
+            ],
+            [
+              900.0,
+              280.0
+            ],
+            [
+              900.0,
+              328.0
+            ],
+            [
+              840.0,
+              328.0
+            ],
+            [
+              840.0,
+              280.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-019",
+      "label": "19",
+      "capacity": 4,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 1020.0,
+      "y": 280.0,
+      "centroid_x": 1060.0,
+      "centroid_y": 312.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 1020.0,280.0 L 1100.0,280.0 L 1100.0,344.0 L 1020.0,344.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1020.0,
+              280.0
+            ],
+            [
+              1100.0,
+              280.0
+            ],
+            [
+              1100.0,
+              344.0
+            ],
+            [
+              1020.0,
+              344.0
+            ],
+            [
+              1020.0,
+              280.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-020",
+      "label": "20",
+      "capacity": 4,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 180.0,
+      "y": 360.0,
+      "centroid_x": 220.0,
+      "centroid_y": 392.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 180.0,360.0 L 260.0,360.0 L 260.0,424.0 L 180.0,424.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              180.0,
+              360.0
+            ],
+            [
+              260.0,
+              360.0
+            ],
+            [
+              260.0,
+              424.0
+            ],
+            [
+              180.0,
+              424.0
+            ],
+            [
+              180.0,
+              360.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-021",
+      "label": "21",
+      "capacity": 4,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 420.0,
+      "y": 360.0,
+      "centroid_x": 460.0,
+      "centroid_y": 392.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 420.0,360.0 L 500.0,360.0 L 500.0,424.0 L 420.0,424.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              420.0,
+              360.0
+            ],
+            [
+              500.0,
+              360.0
+            ],
+            [
+              500.0,
+              424.0
+            ],
+            [
+              420.0,
+              424.0
+            ],
+            [
+              420.0,
+              360.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-022",
+      "label": "22",
+      "capacity": 4,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 660.0,
+      "y": 360.0,
+      "centroid_x": 700.0,
+      "centroid_y": 392.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 660.0,360.0 L 740.0,360.0 L 740.0,424.0 L 660.0,424.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              660.0,
+              360.0
+            ],
+            [
+              740.0,
+              360.0
+            ],
+            [
+              740.0,
+              424.0
+            ],
+            [
+              660.0,
+              424.0
+            ],
+            [
+              660.0,
+              360.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-031",
+      "label": "31",
+      "capacity": 4,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 1020.0,
+      "y": 160.0,
+      "centroid_x": 1060.0,
+      "centroid_y": 192.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 1020.0,160.0 L 1100.0,160.0 L 1100.0,224.0 L 1020.0,224.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1020.0,
+              160.0
+            ],
+            [
+              1100.0,
+              160.0
+            ],
+            [
+              1100.0,
+              224.0
+            ],
+            [
+              1020.0,
+              224.0
+            ],
+            [
+              1020.0,
+              160.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-032",
+      "label": "32",
+      "capacity": 4,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 1020.0,
+      "y": 256.0,
+      "centroid_x": 1060.0,
+      "centroid_y": 288.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 1020.0,256.0 L 1100.0,256.0 L 1100.0,320.0 L 1020.0,320.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1020.0,
+              256.0
+            ],
+            [
+              1100.0,
+              256.0
+            ],
+            [
+              1100.0,
+              320.0
+            ],
+            [
+              1020.0,
+              320.0
+            ],
+            [
+              1020.0,
+              256.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-033",
+      "label": "33",
+      "capacity": 4,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 1020.0,
+      "y": 352.0,
+      "centroid_x": 1060.0,
+      "centroid_y": 384.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 1020.0,352.0 L 1100.0,352.0 L 1100.0,416.0 L 1020.0,416.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1020.0,
+              352.0
+            ],
+            [
+              1100.0,
+              352.0
+            ],
+            [
+              1100.0,
+              416.0
+            ],
+            [
+              1020.0,
+              416.0
+            ],
+            [
+              1020.0,
+              352.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-034",
+      "label": "34",
+      "capacity": 4,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 1020.0,
+      "y": 448.0,
+      "centroid_x": 1060.0,
+      "centroid_y": 480.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 1020.0,448.0 L 1100.0,448.0 L 1100.0,512.0 L 1020.0,512.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1020.0,
+              448.0
+            ],
+            [
+              1100.0,
+              448.0
+            ],
+            [
+              1100.0,
+              512.0
+            ],
+            [
+              1020.0,
+              512.0
+            ],
+            [
+              1020.0,
+              448.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-035",
+      "label": "35",
+      "capacity": 4,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 1020.0,
+      "y": 544.0,
+      "centroid_x": 1060.0,
+      "centroid_y": 576.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 1020.0,544.0 L 1100.0,544.0 L 1100.0,608.0 L 1020.0,608.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1020.0,
+              544.0
+            ],
+            [
+              1100.0,
+              544.0
+            ],
+            [
+              1100.0,
+              608.0
+            ],
+            [
+              1020.0,
+              608.0
+            ],
+            [
+              1020.0,
+              544.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-023",
+      "label": "23",
+      "capacity": 6,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "circle",
+      "x": 540.0,
+      "y": 400.0,
+      "centroid_x": 590.0,
+      "centroid_y": 450.0,
+      "rotation": 0.0,
+      "width": 100,
+      "height": 100,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 540.0,450.0 A 50.0,50.0 0 1,1 640.0,450.0 A 50.0,50.0 0 1,1 540.0,450.0",
+      "geometry": {
+        "type": "Circle",
+        "center": [
+          590.0,
+          450.0
+        ],
+        "radius": 50.0
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-024",
+      "label": "24",
+      "capacity": 6,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "circle",
+      "x": 684.0,
+      "y": 400.0,
+      "centroid_x": 734.0,
+      "centroid_y": 450.0,
+      "rotation": 0.0,
+      "width": 100,
+      "height": 100,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 684.0,450.0 A 50.0,50.0 0 1,1 784.0,450.0 A 50.0,50.0 0 1,1 684.0,450.0",
+      "geometry": {
+        "type": "Circle",
+        "center": [
+          734.0,
+          450.0
+        ],
+        "radius": 50.0
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-025",
+      "label": "25",
+      "capacity": 6,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "circle",
+      "x": 828.0,
+      "y": 400.0,
+      "centroid_x": 878.0,
+      "centroid_y": 450.0,
+      "rotation": 0.0,
+      "width": 100,
+      "height": 100,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 828.0,450.0 A 50.0,50.0 0 1,1 928.0,450.0 A 50.0,50.0 0 1,1 828.0,450.0",
+      "geometry": {
+        "type": "Circle",
+        "center": [
+          878.0,
+          450.0
+        ],
+        "radius": 50.0
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-026",
+      "label": "26",
+      "capacity": 6,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "circle",
+      "x": 972.0,
+      "y": 400.0,
+      "centroid_x": 1022.0,
+      "centroid_y": 450.0,
+      "rotation": 0.0,
+      "width": 100,
+      "height": 100,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 972.0,450.0 A 50.0,50.0 0 1,1 1072.0,450.0 A 50.0,50.0 0 1,1 972.0,450.0",
+      "geometry": {
+        "type": "Circle",
+        "center": [
+          1022.0,
+          450.0
+        ],
+        "radius": 50.0
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-027",
+      "label": "27",
+      "capacity": 6,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "circle",
+      "x": 540.0,
+      "y": 520.0,
+      "centroid_x": 590.0,
+      "centroid_y": 570.0,
+      "rotation": 0.0,
+      "width": 100,
+      "height": 100,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 540.0,570.0 A 50.0,50.0 0 1,1 640.0,570.0 A 50.0,50.0 0 1,1 540.0,570.0",
+      "geometry": {
+        "type": "Circle",
+        "center": [
+          590.0,
+          570.0
+        ],
+        "radius": 50.0
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-028",
+      "label": "28",
+      "capacity": 6,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "circle",
+      "x": 684.0,
+      "y": 520.0,
+      "centroid_x": 734.0,
+      "centroid_y": 570.0,
+      "rotation": 0.0,
+      "width": 100,
+      "height": 100,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 684.0,570.0 A 50.0,50.0 0 1,1 784.0,570.0 A 50.0,50.0 0 1,1 684.0,570.0",
+      "geometry": {
+        "type": "Circle",
+        "center": [
+          734.0,
+          570.0
+        ],
+        "radius": 50.0
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-029",
+      "label": "29",
+      "capacity": 6,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "circle",
+      "x": 828.0,
+      "y": 520.0,
+      "centroid_x": 878.0,
+      "centroid_y": 570.0,
+      "rotation": 0.0,
+      "width": 100,
+      "height": 100,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 828.0,570.0 A 50.0,50.0 0 1,1 928.0,570.0 A 50.0,50.0 0 1,1 828.0,570.0",
+      "geometry": {
+        "type": "Circle",
+        "center": [
+          878.0,
+          570.0
+        ],
+        "radius": 50.0
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-030",
+      "label": "30",
+      "capacity": 6,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "circle",
+      "x": 972.0,
+      "y": 520.0,
+      "centroid_x": 1022.0,
+      "centroid_y": 570.0,
+      "rotation": 0.0,
+      "width": 100,
+      "height": 100,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 972.0,570.0 A 50.0,50.0 0 1,1 1072.0,570.0 A 50.0,50.0 0 1,1 972.0,570.0",
+      "geometry": {
+        "type": "Circle",
+        "center": [
+          1022.0,
+          570.0
+        ],
+        "radius": 50.0
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-036",
+      "label": "36",
+      "capacity": 2,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 60.0,
+      "y": 440.0,
+      "centroid_x": 90.0,
+      "centroid_y": 464.0,
+      "rotation": 0.0,
+      "width": 60,
+      "height": 48,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 60.0,440.0 L 120.0,440.0 L 120.0,488.0 L 60.0,488.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              60.0,
+              440.0
+            ],
+            [
+              120.0,
+              440.0
+            ],
+            [
+              120.0,
+              488.0
+            ],
+            [
+              60.0,
+              488.0
+            ],
+            [
+              60.0,
+              440.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-037",
+      "label": "37",
+      "capacity": 4,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 204.0,
+      "y": 440.0,
+      "centroid_x": 244.0,
+      "centroid_y": 472.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 204.0,440.0 L 284.0,440.0 L 284.0,504.0 L 204.0,504.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              204.0,
+              440.0
+            ],
+            [
+              284.0,
+              440.0
+            ],
+            [
+              284.0,
+              504.0
+            ],
+            [
+              204.0,
+              504.0
+            ],
+            [
+              204.0,
+              440.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-038",
+      "label": "38",
+      "capacity": 4,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 348.0,
+      "y": 440.0,
+      "centroid_x": 388.0,
+      "centroid_y": 472.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 348.0,440.0 L 428.0,440.0 L 428.0,504.0 L 348.0,504.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              348.0,
+              440.0
+            ],
+            [
+              428.0,
+              440.0
+            ],
+            [
+              428.0,
+              504.0
+            ],
+            [
+              348.0,
+              504.0
+            ],
+            [
+              348.0,
+              440.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-039",
+      "label": "39",
+      "capacity": 2,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 492.0,
+      "y": 440.0,
+      "centroid_x": 522.0,
+      "centroid_y": 464.0,
+      "rotation": 0.0,
+      "width": 60,
+      "height": 48,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 492.0,440.0 L 552.0,440.0 L 552.0,488.0 L 492.0,488.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              492.0,
+              440.0
+            ],
+            [
+              552.0,
+              440.0
+            ],
+            [
+              552.0,
+              488.0
+            ],
+            [
+              492.0,
+              488.0
+            ],
+            [
+              492.0,
+              440.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-040",
+      "label": "40",
+      "capacity": 4,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 60.0,
+      "y": 560.0,
+      "centroid_x": 100.0,
+      "centroid_y": 592.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 60.0,560.0 L 140.0,560.0 L 140.0,624.0 L 60.0,624.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              60.0,
+              560.0
+            ],
+            [
+              140.0,
+              560.0
+            ],
+            [
+              140.0,
+              624.0
+            ],
+            [
+              60.0,
+              624.0
+            ],
+            [
+              60.0,
+              560.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-041",
+      "label": "41",
+      "capacity": 4,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 204.0,
+      "y": 560.0,
+      "centroid_x": 244.0,
+      "centroid_y": 592.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 204.0,560.0 L 284.0,560.0 L 284.0,624.0 L 204.0,624.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              204.0,
+              560.0
+            ],
+            [
+              284.0,
+              560.0
+            ],
+            [
+              284.0,
+              624.0
+            ],
+            [
+              204.0,
+              624.0
+            ],
+            [
+              204.0,
+              560.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-042",
+      "label": "42",
+      "capacity": 2,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 348.0,
+      "y": 560.0,
+      "centroid_x": 378.0,
+      "centroid_y": 584.0,
+      "rotation": 0.0,
+      "width": 60,
+      "height": 48,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 348.0,560.0 L 408.0,560.0 L 408.0,608.0 L 348.0,608.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              348.0,
+              560.0
+            ],
+            [
+              408.0,
+              560.0
+            ],
+            [
+              408.0,
+              608.0
+            ],
+            [
+              348.0,
+              608.0
+            ],
+            [
+              348.0,
+              560.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-043",
+      "label": "43",
+      "capacity": 4,
+      "section": "Main Dining (Sections 1-4)",
+      "zone": "Main Dining",
+      "shape": "rectangle",
+      "x": 492.0,
+      "y": 560.0,
+      "centroid_x": 532.0,
+      "centroid_y": 592.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 492.0,560.0 L 572.0,560.0 L 572.0,624.0 L 492.0,624.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              492.0,
+              560.0
+            ],
+            [
+              572.0,
+              560.0
+            ],
+            [
+              572.0,
+              624.0
+            ],
+            [
+              492.0,
+              624.0
+            ],
+            [
+              492.0,
+              560.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-044",
+      "label": "44",
+      "capacity": 2,
+      "section": "Smoking Area (Sections 5-6)",
+      "zone": "Smoking Area",
+      "shape": "circle",
+      "x": 600.0,
+      "y": 480.0,
+      "centroid_x": 630.0,
+      "centroid_y": 510.0,
+      "rotation": 0.0,
+      "width": 60,
+      "height": 60,
+      "smoking": true,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 600.0,510.0 A 30.0,30.0 0 1,1 660.0,510.0 A 30.0,30.0 0 1,1 600.0,510.0",
+      "geometry": {
+        "type": "Circle",
+        "center": [
+          630.0,
+          510.0
+        ],
+        "radius": 30.0
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-045",
+      "label": "45",
+      "capacity": 4,
+      "section": "Smoking Area (Sections 5-6)",
+      "zone": "Smoking Area",
+      "shape": "circle",
+      "x": 696.0,
+      "y": 480.0,
+      "centroid_x": 736.0,
+      "centroid_y": 520.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 80,
+      "smoking": true,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 696.0,520.0 A 40.0,40.0 0 1,1 776.0,520.0 A 40.0,40.0 0 1,1 696.0,520.0",
+      "geometry": {
+        "type": "Circle",
+        "center": [
+          736.0,
+          520.0
+        ],
+        "radius": 40.0
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-046",
+      "label": "46",
+      "capacity": 4,
+      "section": "Smoking Area (Sections 5-6)",
+      "zone": "Smoking Area",
+      "shape": "circle",
+      "x": 792.0,
+      "y": 480.0,
+      "centroid_x": 832.0,
+      "centroid_y": 520.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 80,
+      "smoking": true,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 792.0,520.0 A 40.0,40.0 0 1,1 872.0,520.0 A 40.0,40.0 0 1,1 792.0,520.0",
+      "geometry": {
+        "type": "Circle",
+        "center": [
+          832.0,
+          520.0
+        ],
+        "radius": 40.0
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-047",
+      "label": "47",
+      "capacity": 2,
+      "section": "Smoking Area (Sections 5-6)",
+      "zone": "Smoking Area",
+      "shape": "circle",
+      "x": 888.0,
+      "y": 480.0,
+      "centroid_x": 918.0,
+      "centroid_y": 510.0,
+      "rotation": 0.0,
+      "width": 60,
+      "height": 60,
+      "smoking": true,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 888.0,510.0 A 30.0,30.0 0 1,1 948.0,510.0 A 30.0,30.0 0 1,1 888.0,510.0",
+      "geometry": {
+        "type": "Circle",
+        "center": [
+          918.0,
+          510.0
+        ],
+        "radius": 30.0
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-048",
+      "label": "48",
+      "capacity": 4,
+      "section": "Smoking Area (Sections 5-6)",
+      "zone": "Smoking Area",
+      "shape": "circle",
+      "x": 984.0,
+      "y": 480.0,
+      "centroid_x": 1024.0,
+      "centroid_y": 520.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 80,
+      "smoking": true,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 984.0,520.0 A 40.0,40.0 0 1,1 1064.0,520.0 A 40.0,40.0 0 1,1 984.0,520.0",
+      "geometry": {
+        "type": "Circle",
+        "center": [
+          1024.0,
+          520.0
+        ],
+        "radius": 40.0
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-049",
+      "label": "49",
+      "capacity": 4,
+      "section": "Smoking Area (Sections 5-6)",
+      "zone": "Smoking Area",
+      "shape": "circle",
+      "x": 1080.0,
+      "y": 480.0,
+      "centroid_x": 1120.0,
+      "centroid_y": 520.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 80,
+      "smoking": true,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 1080.0,520.0 A 40.0,40.0 0 1,1 1160.0,520.0 A 40.0,40.0 0 1,1 1080.0,520.0",
+      "geometry": {
+        "type": "Circle",
+        "center": [
+          1120.0,
+          520.0
+        ],
+        "radius": 40.0
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-050",
+      "label": "50",
+      "capacity": 2,
+      "section": "Smoking Area (Sections 5-6)",
+      "zone": "Smoking Area",
+      "shape": "circle",
+      "x": 600.0,
+      "y": 576.0,
+      "centroid_x": 630.0,
+      "centroid_y": 606.0,
+      "rotation": 0.0,
+      "width": 60,
+      "height": 60,
+      "smoking": true,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 600.0,606.0 A 30.0,30.0 0 1,1 660.0,606.0 A 30.0,30.0 0 1,1 600.0,606.0",
+      "geometry": {
+        "type": "Circle",
+        "center": [
+          630.0,
+          606.0
+        ],
+        "radius": 30.0
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-051",
+      "label": "51",
+      "capacity": 4,
+      "section": "Smoking Area (Sections 5-6)",
+      "zone": "Smoking Area",
+      "shape": "circle",
+      "x": 696.0,
+      "y": 576.0,
+      "centroid_x": 736.0,
+      "centroid_y": 616.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 80,
+      "smoking": true,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 696.0,616.0 A 40.0,40.0 0 1,1 776.0,616.0 A 40.0,40.0 0 1,1 696.0,616.0",
+      "geometry": {
+        "type": "Circle",
+        "center": [
+          736.0,
+          616.0
+        ],
+        "radius": 40.0
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-052",
+      "label": "52",
+      "capacity": 4,
+      "section": "Smoking Area (Sections 5-6)",
+      "zone": "Smoking Area",
+      "shape": "circle",
+      "x": 792.0,
+      "y": 576.0,
+      "centroid_x": 832.0,
+      "centroid_y": 616.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 80,
+      "smoking": true,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 792.0,616.0 A 40.0,40.0 0 1,1 872.0,616.0 A 40.0,40.0 0 1,1 792.0,616.0",
+      "geometry": {
+        "type": "Circle",
+        "center": [
+          832.0,
+          616.0
+        ],
+        "radius": 40.0
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-053",
+      "label": "53",
+      "capacity": 2,
+      "section": "Smoking Area (Sections 5-6)",
+      "zone": "Smoking Area",
+      "shape": "circle",
+      "x": 888.0,
+      "y": 576.0,
+      "centroid_x": 918.0,
+      "centroid_y": 606.0,
+      "rotation": 0.0,
+      "width": 60,
+      "height": 60,
+      "smoking": true,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 888.0,606.0 A 30.0,30.0 0 1,1 948.0,606.0 A 30.0,30.0 0 1,1 888.0,606.0",
+      "geometry": {
+        "type": "Circle",
+        "center": [
+          918.0,
+          606.0
+        ],
+        "radius": 30.0
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-054",
+      "label": "54",
+      "capacity": 4,
+      "section": "Smoking Area (Sections 5-6)",
+      "zone": "Smoking Area",
+      "shape": "circle",
+      "x": 984.0,
+      "y": 576.0,
+      "centroid_x": 1024.0,
+      "centroid_y": 616.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 80,
+      "smoking": true,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 984.0,616.0 A 40.0,40.0 0 1,1 1064.0,616.0 A 40.0,40.0 0 1,1 984.0,616.0",
+      "geometry": {
+        "type": "Circle",
+        "center": [
+          1024.0,
+          616.0
+        ],
+        "radius": 40.0
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-055",
+      "label": "55",
+      "capacity": 4,
+      "section": "Smoking Area (Sections 5-6)",
+      "zone": "Smoking Area",
+      "shape": "circle",
+      "x": 1080.0,
+      "y": 576.0,
+      "centroid_x": 1120.0,
+      "centroid_y": 616.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 80,
+      "smoking": true,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 1080.0,616.0 A 40.0,40.0 0 1,1 1160.0,616.0 A 40.0,40.0 0 1,1 1080.0,616.0",
+      "geometry": {
+        "type": "Circle",
+        "center": [
+          1120.0,
+          616.0
+        ],
+        "radius": 40.0
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-056",
+      "label": "56",
+      "capacity": 2,
+      "section": "Sea View (Section 7)",
+      "zone": "Sea View",
+      "shape": "rectangle",
+      "x": 120.0,
+      "y": 600.0,
+      "centroid_x": 150.0,
+      "centroid_y": 624.0,
+      "rotation": 0.0,
+      "width": 60,
+      "height": 48,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 120.0,600.0 L 180.0,600.0 L 180.0,648.0 L 120.0,648.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.0,
+              600.0
+            ],
+            [
+              180.0,
+              600.0
+            ],
+            [
+              180.0,
+              648.0
+            ],
+            [
+              120.0,
+              648.0
+            ],
+            [
+              120.0,
+              600.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-057",
+      "label": "57",
+      "capacity": 4,
+      "section": "Sea View (Section 7)",
+      "zone": "Sea View",
+      "shape": "rectangle",
+      "x": 300.0,
+      "y": 600.0,
+      "centroid_x": 340.0,
+      "centroid_y": 632.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 300.0,600.0 L 380.0,600.0 L 380.0,664.0 L 300.0,664.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              300.0,
+              600.0
+            ],
+            [
+              380.0,
+              600.0
+            ],
+            [
+              380.0,
+              664.0
+            ],
+            [
+              300.0,
+              664.0
+            ],
+            [
+              300.0,
+              600.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-058",
+      "label": "58",
+      "capacity": 2,
+      "section": "Sea View (Section 7)",
+      "zone": "Sea View",
+      "shape": "rectangle",
+      "x": 480.0,
+      "y": 600.0,
+      "centroid_x": 510.0,
+      "centroid_y": 624.0,
+      "rotation": 0.0,
+      "width": 60,
+      "height": 48,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 480.0,600.0 L 540.0,600.0 L 540.0,648.0 L 480.0,648.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              480.0,
+              600.0
+            ],
+            [
+              540.0,
+              600.0
+            ],
+            [
+              540.0,
+              648.0
+            ],
+            [
+              480.0,
+              648.0
+            ],
+            [
+              480.0,
+              600.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-059",
+      "label": "59",
+      "capacity": 4,
+      "section": "Sea View (Section 7)",
+      "zone": "Sea View",
+      "shape": "rectangle",
+      "x": 660.0,
+      "y": 600.0,
+      "centroid_x": 700.0,
+      "centroid_y": 632.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 660.0,600.0 L 740.0,600.0 L 740.0,664.0 L 660.0,664.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              660.0,
+              600.0
+            ],
+            [
+              740.0,
+              600.0
+            ],
+            [
+              740.0,
+              664.0
+            ],
+            [
+              660.0,
+              664.0
+            ],
+            [
+              660.0,
+              600.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-060",
+      "label": "60",
+      "capacity": 2,
+      "section": "Sea View (Section 7)",
+      "zone": "Sea View",
+      "shape": "rectangle",
+      "x": 840.0,
+      "y": 600.0,
+      "centroid_x": 870.0,
+      "centroid_y": 624.0,
+      "rotation": 0.0,
+      "width": 60,
+      "height": 48,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 840.0,600.0 L 900.0,600.0 L 900.0,648.0 L 840.0,648.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              840.0,
+              600.0
+            ],
+            [
+              900.0,
+              600.0
+            ],
+            [
+              900.0,
+              648.0
+            ],
+            [
+              840.0,
+              648.0
+            ],
+            [
+              840.0,
+              600.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-061",
+      "label": "61",
+      "capacity": 4,
+      "section": "Sea View (Section 7)",
+      "zone": "Sea View",
+      "shape": "rectangle",
+      "x": 1020.0,
+      "y": 600.0,
+      "centroid_x": 1060.0,
+      "centroid_y": 632.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 1020.0,600.0 L 1100.0,600.0 L 1100.0,664.0 L 1020.0,664.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1020.0,
+              600.0
+            ],
+            [
+              1100.0,
+              600.0
+            ],
+            [
+              1100.0,
+              664.0
+            ],
+            [
+              1020.0,
+              664.0
+            ],
+            [
+              1020.0,
+              600.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-062",
+      "label": "62",
+      "capacity": 2,
+      "section": "Sea View (Section 7)",
+      "zone": "Sea View",
+      "shape": "rectangle",
+      "x": 120.0,
+      "y": 720.0,
+      "centroid_x": 150.0,
+      "centroid_y": 744.0,
+      "rotation": 0.0,
+      "width": 60,
+      "height": 48,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 120.0,720.0 L 180.0,720.0 L 180.0,768.0 L 120.0,768.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.0,
+              720.0
+            ],
+            [
+              180.0,
+              720.0
+            ],
+            [
+              180.0,
+              768.0
+            ],
+            [
+              120.0,
+              768.0
+            ],
+            [
+              120.0,
+              720.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-063",
+      "label": "63",
+      "capacity": 4,
+      "section": "Sea View (Section 7)",
+      "zone": "Sea View",
+      "shape": "rectangle",
+      "x": 300.0,
+      "y": 720.0,
+      "centroid_x": 340.0,
+      "centroid_y": 752.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 300.0,720.0 L 380.0,720.0 L 380.0,784.0 L 300.0,784.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              300.0,
+              720.0
+            ],
+            [
+              380.0,
+              720.0
+            ],
+            [
+              380.0,
+              784.0
+            ],
+            [
+              300.0,
+              784.0
+            ],
+            [
+              300.0,
+              720.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-064",
+      "label": "64",
+      "capacity": 2,
+      "section": "Sea View (Section 7)",
+      "zone": "Sea View",
+      "shape": "rectangle",
+      "x": 480.0,
+      "y": 720.0,
+      "centroid_x": 510.0,
+      "centroid_y": 744.0,
+      "rotation": 0.0,
+      "width": 60,
+      "height": 48,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 480.0,720.0 L 540.0,720.0 L 540.0,768.0 L 480.0,768.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              480.0,
+              720.0
+            ],
+            [
+              540.0,
+              720.0
+            ],
+            [
+              540.0,
+              768.0
+            ],
+            [
+              480.0,
+              768.0
+            ],
+            [
+              480.0,
+              720.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-065",
+      "label": "65",
+      "capacity": 4,
+      "section": "Sea View (Section 7)",
+      "zone": "Sea View",
+      "shape": "rectangle",
+      "x": 660.0,
+      "y": 720.0,
+      "centroid_x": 700.0,
+      "centroid_y": 752.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 660.0,720.0 L 740.0,720.0 L 740.0,784.0 L 660.0,784.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              660.0,
+              720.0
+            ],
+            [
+              740.0,
+              720.0
+            ],
+            [
+              740.0,
+              784.0
+            ],
+            [
+              660.0,
+              784.0
+            ],
+            [
+              660.0,
+              720.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-066",
+      "label": "66",
+      "capacity": 2,
+      "section": "Sea View (Section 7)",
+      "zone": "Sea View",
+      "shape": "rectangle",
+      "x": 840.0,
+      "y": 720.0,
+      "centroid_x": 870.0,
+      "centroid_y": 744.0,
+      "rotation": 0.0,
+      "width": 60,
+      "height": 48,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 840.0,720.0 L 900.0,720.0 L 900.0,768.0 L 840.0,768.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              840.0,
+              720.0
+            ],
+            [
+              900.0,
+              720.0
+            ],
+            [
+              900.0,
+              768.0
+            ],
+            [
+              840.0,
+              768.0
+            ],
+            [
+              840.0,
+              720.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    },
+    {
+      "id": "table-067",
+      "label": "67",
+      "capacity": 4,
+      "section": "Sea View (Section 7)",
+      "zone": "Sea View",
+      "shape": "rectangle",
+      "x": 1020.0,
+      "y": 720.0,
+      "centroid_x": 1060.0,
+      "centroid_y": 752.0,
+      "rotation": 0.0,
+      "width": 80,
+      "height": 64,
+      "smoking": false,
+      "accessible": false,
+      "min_spend": 0.0,
+      "svg_path": "M 1020.0,720.0 L 1100.0,720.0 L 1100.0,784.0 L 1020.0,784.0 Z",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1020.0,
+              720.0
+            ],
+            [
+              1100.0,
+              720.0
+            ],
+            [
+              1100.0,
+              784.0
+            ],
+            [
+              1020.0,
+              784.0
+            ],
+            [
+              1020.0,
+              720.0
+            ]
+          ]
+        ]
+      },
+      "is_active": true
+    }
+  ]
+}

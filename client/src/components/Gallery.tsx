@@ -16,7 +16,12 @@ export default function Gallery({ images, restaurantName }: GalleryProps) {
     return null;
   }
 
+  // Always show only the first 3 images in the grid
+  const displayImages = images.slice(0, 3);
+
   const openImage = (index: number) => {
+    // When opening from grid, start from the clicked image
+    // But allow scrolling through all images in lightbox
     setSelectedImageIndex(index);
   };
 
@@ -51,9 +56,9 @@ export default function Gallery({ images, restaurantName }: GalleryProps) {
       <div className="space-y-4">
         <h2 className="text-2xl font-bold">Gallery</h2>
         
-        {/* Main grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {images.map((image, index) => (
+        {/* Main grid - Always shows exactly 3 images */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {displayImages.map((image, index) => (
             <div
               key={index}
               className="group relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer transform transition-transform duration-200 hover:scale-105"
@@ -76,9 +81,16 @@ export default function Gallery({ images, restaurantName }: GalleryProps) {
             </div>
           ))}
         </div>
+
+        {/* Show total image count if there are more than 3 images */}
+        {images.length > 3 && (
+          <div className="text-center text-sm text-gray-600">
+            <p>Click any image to view all {images.length} photos</p>
+          </div>
+        )}
       </div>
 
-      {/* Lightbox Modal */}
+      {/* Lightbox Modal - Shows all images */}
       <Dialog open={selectedImageIndex !== null} onOpenChange={() => closeImage()}>
         <DialogContent className="max-w-none w-screen h-screen p-0 border-0 bg-black/95">
           <div className="relative w-full h-full flex items-center justify-center">
@@ -92,7 +104,7 @@ export default function Gallery({ images, restaurantName }: GalleryProps) {
               <X className="h-6 w-6" />
             </Button>
 
-            {/* Navigation buttons */}
+            {/* Navigation buttons - Always show if there are multiple images */}
             {images.length > 1 && (
               <>
                 <Button

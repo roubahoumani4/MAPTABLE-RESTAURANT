@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useParams } from "wouter";
+import { useState, useEffect } from 'react';
+import { useParams } from 'wouter';
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import Header from "@/components/Header";
-import FloorMap from "@/components/FloorMap";
+import InteractiveFloorMap from "@/components/InteractiveFloorMap";
 import BookingForm from "@/components/BookingForm";
 import LoginModal from "@/components/LoginModal";
 import Gallery from "@/components/Gallery";
@@ -16,6 +16,9 @@ import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { isUnauthorizedError } from "@/lib/authUtils";
 import { useAuth } from "@/hooks/useAuth";
+import { Table } from '@/lib/types';
+// Import the Murray logo using Vite's import.meta.url approach
+const murrayLogo = new URL('../assets/images/Murray.png', import.meta.url).href;
 
 export default function RestaurantDetail() {
   const { slug } = useParams();
@@ -147,9 +150,11 @@ export default function RestaurantDetail() {
         <div 
           className="h-64 bg-cover bg-center"
           style={{
-            backgroundImage: restaurant.images?.[0] 
-              ? `url(${restaurant.images[0]})`
-              : `linear-gradient(rgba(15, 118, 110, 0.7), rgba(15, 118, 110, 0.7)), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600')`
+            backgroundImage: restaurant.slug === 'murrany' 
+              ? `url(${murrayLogo})`
+              : restaurant.images?.[0] 
+                ? `url(${restaurant.images[0]})`
+                : `linear-gradient(rgba(15, 118, 110, 0.7), rgba(15, 118, 110, 0.7)), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600')`
           }}
         >
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
@@ -225,24 +230,11 @@ export default function RestaurantDetail() {
             <Card>
               <CardContent className="p-6">
                 <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-2xl font-bold">Select Your Table</h2>
-                  <div className="flex items-center space-x-4 text-sm">
-                    <div className="flex items-center">
-                      <div className="w-4 h-4 bg-green-500 rounded mr-2"></div>
-                      <span>Available</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-4 h-4 bg-red-500 rounded mr-2"></div>
-                      <span>Reserved</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-4 h-4 bg-yellow-500 rounded mr-2"></div>
-                      <span>Held</span>
-                    </div>
-                  </div>
+                  <h2 className="text-2xl font-bold">Restaurant Floor Plan</h2>
                 </div>
 
-                <FloorMap 
+                <InteractiveFloorMap 
+                  mapSrc={new URL('../assets/images/floormap.png', import.meta.url).href}
                   tables={tables} 
                   onTableSelect={handleTableSelect}
                   restaurantId={restaurant.id}
@@ -342,12 +334,12 @@ export default function RestaurantDetail() {
                   <div className="flex items-center justify-center space-x-2 mb-4">
                     <Users className="h-5 w-5 text-green-600" />
                     <span className="text-green-600 font-semibold">
-                      {tables.filter((t: any) => !t.isReserved).length} tables available
+                      Restaurant Floor Plan
                     </span>
                   </div>
                   
                   <p className="text-sm text-gray-500 mb-4">
-                    Select a table from the floor map to make a reservation.
+                    View the restaurant layout and floor plan.
                   </p>
                 </div>
               </CardContent>
@@ -394,21 +386,12 @@ export default function RestaurantDetail() {
           </DialogHeader>
           
           <div className="flex-1 p-6 pt-0">
-            {/* Sample Menu Content */}
-            <div className="space-y-6">
-              <div className="text-center py-8">
-                <FileText className="h-16 w-16 text-teal-600 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Restaurant Menu</h3>
-                <p className="text-gray-600 mb-4">
-                  This is a sample menu for {restaurant?.name}. In a real application, 
-                  this would display the actual menu items with prices.
-                </p>
-                <div className="bg-gray-50 rounded-lg p-4 text-sm text-gray-500">
-                  <p>Menu items and prices would be displayed here</p>
-                  <p>This could include appetizers, main courses, desserts, and beverages</p>
-                  <p>Each item would show the name, description, and price</p>
-                </div>
-              </div>
+            {/* Menu Content - Would be populated from real menu API */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold">Menu</h3>
+              <p className="text-gray-600">
+                Menu data would be loaded from the restaurant's actual menu API.
+              </p>
             </div>
           </div>
         </DialogContent>
