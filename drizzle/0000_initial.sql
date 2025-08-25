@@ -1,0 +1,16 @@
+-- Create enums first
+CREATE TYPE user_role AS ENUM ('USER', 'RESTAURANT_MANAGER', 'ADMIN');
+CREATE TYPE user_tier AS ENUM ('BRONZE', 'SILVER', 'GOLD', 'PLATINUM');
+CREATE TYPE reservation_status AS ENUM ('PENDING', 'CONFIRMED', 'SEATED', 'COMPLETED', 'CANCELLED', 'NO_SHOW');
+
+-- Update users table
+ALTER TABLE users
+ADD COLUMN IF NOT EXISTS password VARCHAR(255) NOT NULL,
+ADD COLUMN IF NOT EXISTS name VARCHAR(255) NOT NULL,
+ADD COLUMN IF NOT EXISTS phone VARCHAR(255),
+ADD COLUMN IF NOT EXISTS phone_verified BOOLEAN NOT NULL DEFAULT FALSE;
+
+-- Convert role column to enum type
+ALTER TABLE users 
+ALTER COLUMN role TYPE user_role USING role::user_role,
+ALTER COLUMN tier TYPE user_tier USING tier::user_tier;

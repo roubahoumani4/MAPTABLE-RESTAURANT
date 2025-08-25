@@ -121,12 +121,24 @@ export class DatabaseStorage implements IStorage {
       );
     }
     
+    if (filters?.cuisine) {
+      whereConditions.push(
+        sql`${restaurants.cuisines} @> ${JSON.stringify([filters.cuisine])}`
+      );
+    }
+    
     if (filters?.priceLevel) {
       whereConditions.push(eq(restaurants.priceLevel, filters.priceLevel));
     }
     
     if (filters?.ratingMin) {
       whereConditions.push(gte(restaurants.ratingAvg, filters.ratingMin.toString()));
+    }
+    
+    if (filters?.location && filters.location !== 'all') {
+      whereConditions.push(
+        sql`${restaurants.address} ILIKE ${'%' + filters.location + '%'}`
+      );
     }
     
     return db.select().from(restaurants)
@@ -396,4 +408,29 @@ export class DatabaseStorage implements IStorage {
   }
 }
 
-export const storage = new DatabaseStorage();
+import { MockStorage } from './mockStorage';
+import { HybridStorage } from './hybridStorage';
+
+// Use real database storage when DATABASE_URL is available, mock storage as fallback
+let storage: IStorage;
+
+try {
+  if (process.env.DATABASE_URL) {
+    // Use real database storage when DATABASE_URL is available
+    if (process.env.NODE_ENV === 'development') {
+      // In development, use hybrid storage (real DB for users, mock for restaurants)
+      storage = new HybridStorage();
+    } else {
+      // In production, use full database storage
+      storage = new DatabaseStorage();
+    }
+  } else {
+    // Fall back to mock storage if no database
+    storage = new MockStorage();
+  }
+} catch (error) {
+  console.warn('Database connection failed, falling back to mock storage:', error);
+  storage = new MockStorage();
+}
+
+export { storage };

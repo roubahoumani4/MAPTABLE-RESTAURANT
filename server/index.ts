@@ -1,10 +1,20 @@
+import 'dotenv/config';
 import express, { type Request, Response, NextFunction } from "express";
-import { registerRoutes } from "./routes";
+import { registerRoutes } from "./baseRoutes";
 import { setupVite, serveStatic, log } from "./vite";
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 const app = express();
+
+// Middleware
+app.use(cors({
+  origin: process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : process.env.FRONTEND_URL,
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 app.use((req, res, next) => {
   const start = Date.now();

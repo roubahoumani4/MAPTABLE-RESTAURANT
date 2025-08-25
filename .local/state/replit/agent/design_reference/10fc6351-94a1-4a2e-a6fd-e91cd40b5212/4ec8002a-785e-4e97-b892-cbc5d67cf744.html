@@ -1,0 +1,1222 @@
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TableMap - Restaurant Reservations Lebanon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#F0FDFA',
+                            500: '#0F766E',
+                            600: '#0D9488',
+                            700: '#0F766E'
+                        },
+                        accent: {
+                            500: '#D97706',
+                            600: '#F59E0B'
+                        },
+                        sage: {
+                            500: '#10B981'
+                        }
+                    },
+                    fontFamily: {
+                        'arabic': ['Amiri', 'serif'],
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 font-inter">
+
+<!-- @COMPONENT: Header -->
+<header class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-utensils text-white text-lg"></i>
+                </div>
+                <span class="text-2xl font-bold text-gray-900">TableMap</span>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#" class="text-gray-700 hover:text-primary-500 font-medium">Restaurants</a>
+                <a href="#" class="text-gray-700 hover:text-primary-500 font-medium">My Reservations</a>
+                <a href="#" class="text-gray-700 hover:text-primary-500 font-medium">Points</a>
+                <div class="flex items-center space-x-2">
+                    <span class="text-sm text-gray-600">EN</span>
+                    <button class="w-10 h-6 bg-gray-200 rounded-full relative" data-event="click:toggleLanguage">
+                        <div class="w-4 h-4 bg-primary-500 rounded-full absolute top-1 left-1 transition-transform"></div>
+                    </button>
+                    <span class="text-sm text-gray-600">عربي</span>
+                </div>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <div class="hidden sm:flex items-center space-x-2">
+                    <span class="text-sm text-gray-600">LBP</span>
+                    <button class="w-10 h-6 bg-gray-200 rounded-full relative" data-event="click:toggleCurrency">
+                        <div class="w-4 h-4 bg-accent-500 rounded-full absolute top-1 left-1 transition-transform"></div>
+                    </button>
+                    <span class="text-sm text-gray-600">USD</span>
+                </div>
+                <button class="bg-primary-500 text-white px-6 py-2 rounded-lg hover:bg-primary-600 transition-colors" data-event="click:openAuth">
+                    Sign In
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- @END_COMPONENT: Header -->
+
+<!-- @COMPONENT: HomePage -->
+<main class="min-h-screen">
+    <!-- Hero Section -->
+    <!-- A warm, inviting Lebanese restaurant interior with traditional decor -->
+    <section class="relative bg-cover bg-center h-96" style="background-image: linear-gradient(rgba(15, 118, 110, 0.7), rgba(15, 118, 110, 0.7)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080');">
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center text-white max-w-4xl mx-auto px-4">
+                <h1 class="text-5xl font-bold mb-6">Reserve Your Perfect Table</h1>
+                <p class="text-xl mb-8 opacity-90">Discover Lebanon's finest restaurants and book with interactive table selection</p>
+                
+                <!-- Search Bar -->
+                <div class="bg-white rounded-2xl p-6 shadow-2xl max-w-2xl mx-auto">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-1">
+                            <input type="text" placeholder="Search restaurants, cuisine..." 
+                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
+                                   data-bind="searchQuery">
+                        </div>
+                        <div class="md:w-40">
+                            <select class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500" 
+                                    data-bind="selectedArea">
+                                <option>All Areas</option>
+                                <option>Beirut</option>
+                                <option>Byblos</option>
+                                <option>Jounieh</option>
+                            </select>
+                        </div>
+                        <button class="bg-accent-500 text-white px-8 py-3 rounded-lg hover:bg-accent-600 transition-colors font-semibold" 
+                                data-event="click:searchRestaurants">
+                            Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="bg-white py-6 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap gap-4 items-center">
+                <h3 class="font-semibold text-gray-900">Filter by:</h3>
+                <div class="flex flex-wrap gap-3">
+                    <button class="px-4 py-2 border border-gray-200 rounded-full hover:border-primary-500 hover:text-primary-500 transition-colors" 
+                            data-event="click:filterCuisine" data-cuisine="lebanese">
+                        Lebanese
+                    </button>
+                    <button class="px-4 py-2 border border-gray-200 rounded-full hover:border-primary-500 hover:text-primary-500 transition-colors" 
+                            data-event="click:filterCuisine" data-cuisine="mediterranean">
+                        Mediterranean
+                    </button>
+                    <button class="px-4 py-2 border border-gray-200 rounded-full hover:border-primary-500 hover:text-primary-500 transition-colors" 
+                            data-event="click:filterCuisine" data-cuisine="asian">
+                        Asian
+                    </button>
+                    <button class="px-4 py-2 border border-gray-200 rounded-full hover:border-primary-500 hover:text-primary-500 transition-colors" 
+                            data-event="click:filterPrice" data-price="2">
+                        $$ - $$$$
+                    </button>
+                    <button class="px-4 py-2 border border-gray-200 rounded-full hover:border-primary-500 hover:text-primary-500 transition-colors" 
+                            data-event="click:filterRating" data-rating="4">
+                        4+ Stars
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Restaurant Listings -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-900">Popular Restaurants</h2>
+                <div class="flex items-center space-x-4">
+                    <span class="text-gray-600">24 restaurants found</span>
+                    <select class="border border-gray-200 rounded-lg px-3 py-2" data-bind="sortBy">
+                        <option>Sort by Rating</option>
+                        <option>Sort by Price</option>
+                        <option>Sort by Distance</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- @MAP: restaurants.map(restaurant => ( -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-mock="true">
+                <!-- Restaurant Card 1 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow cursor-pointer" 
+                     data-event="click:openRestaurant" data-restaurant-id="zaatar-co">
+                    <!-- Traditional Lebanese mezze spread with colorful dishes -->
+                    <img src="https://pixabay.com/get/g40760384296f2aab0de0c35742b64274c7cd2f5e63f4cf89641a3b4eafa056281968fbbbaf3548f707ba033f90fcaa419fb5636dfcc5c8baf43fb02a5a5fc838_1280.jpg" 
+                         alt="Zaatar & Co restaurant" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-gray-900">Zaatar & Co.</h3>
+                            <div class="flex items-center space-x-1">
+                                <span class="text-yellow-500">★</span>
+                                <span class="text-gray-700 font-semibold">4.8</span>
+                                <span class="text-gray-500">(127)</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-3">Authentic Lebanese mezze & grills</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-accent-500 font-semibold">$$$ • Beirut</span>
+                            <div class="flex items-center text-green-600">
+                                <div class="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                                <span class="text-sm">Open now</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">Available tables: 8</span>
+                            <button class="bg-primary-500 text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors" 
+                                    data-event="click:viewTables">
+                                View Tables
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Restaurant Card 2 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow cursor-pointer" 
+                     data-event="click:openRestaurant" data-restaurant-id="saffron-lane">
+                    <!-- Elegant South Asian curry dishes with aromatic spices -->
+                    <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" 
+                         alt="Saffron Lane restaurant" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-gray-900">Saffron Lane</h3>
+                            <div class="flex items-center space-x-1">
+                                <span class="text-yellow-500">★</span>
+                                <span class="text-gray-700 font-semibold">4.6</span>
+                                <span class="text-gray-500">(89)</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-3">Contemporary South Asian cuisine</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-accent-500 font-semibold">$$ • Beirut</span>
+                            <div class="flex items-center text-yellow-600">
+                                <div class="w-2 h-2 bg-yellow-500 rounded-full mr-2"></div>
+                                <span class="text-sm">Busy</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">Available tables: 3</span>
+                            <button class="bg-primary-500 text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors" 
+                                    data-event="click:viewTables">
+                                View Tables
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Restaurant Card 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow cursor-pointer" 
+                     data-event="click:openRestaurant" data-restaurant-id="olive-table">
+                    <!-- Mediterranean coastal dining with fresh seafood and olive groves view -->
+                    <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" 
+                         alt="The Olive Table restaurant" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-gray-900">The Olive Table</h3>
+                            <div class="flex items-center space-x-1">
+                                <span class="text-yellow-500">★</span>
+                                <span class="text-gray-700 font-semibold">4.9</span>
+                                <span class="text-gray-500">(203)</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-3">Mediterranean coastal dining</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-accent-500 font-semibold">$$$$ • Byblos</span>
+                            <div class="flex items-center text-green-600">
+                                <div class="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                                <span class="text-sm">Quiet</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">Available tables: 12</span>
+                            <button class="bg-primary-500 text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors" 
+                                    data-event="click:viewTables">
+                                View Tables
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- @END_MAP )) -->
+        </div>
+    </section>
+</main>
+<!-- @END_COMPONENT: HomePage -->
+
+<!-- @COMPONENT: RestaurantDetailModal -->
+<div id="restaurantModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden" data-event="click:closeModal">
+    <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto" data-event="click:stopPropagation">
+            <!-- Restaurant Header -->
+            <div class="relative">
+                <!-- Elegant Lebanese restaurant interior with warm lighting and traditional elements -->
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600" 
+                     alt="Restaurant interior" class="w-full h-64 object-cover rounded-t-2xl">
+                <button class="absolute top-4 right-4 bg-white bg-opacity-90 rounded-full p-2 hover:bg-opacity-100 transition-opacity" 
+                        data-event="click:closeModal">
+                    <i class="fas fa-times text-gray-700"></i>
+                </button>
+                <div class="absolute bottom-4 left-6 text-white">
+                    <h2 class="text-3xl font-bold mb-2" data-bind="restaurant.name">Zaatar & Co.</h2>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center">
+                            <span class="text-yellow-400">★</span>
+                            <span class="ml-1 font-semibold">4.8</span>
+                            <span class="ml-1 opacity-90">(127 reviews)</span>
+                        </div>
+                        <span class="opacity-90">Lebanese • $$$ • Beirut</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-8">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Restaurant Info -->
+                    <div class="lg:col-span-2">
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-bold mb-4">About</h3>
+                            <p class="text-gray-600 leading-relaxed" data-mock="true">
+                                Experience authentic Lebanese cuisine in the heart of Beirut. Our traditional mezze platters and wood-fired grills 
+                                celebrate the rich culinary heritage of Lebanon with modern presentation and exceptional service.
+                            </p>
+                        </div>
+
+                        <!-- Floor Map Section -->
+                        <div class="mb-8">
+                            <div class="flex justify-between items-center mb-6">
+                                <h3 class="text-2xl font-bold">Select Your Table</h3>
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex items-center">
+                                        <div class="w-4 h-4 bg-green-500 rounded mr-2"></div>
+                                        <span class="text-sm">Available</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="w-4 h-4 bg-red-500 rounded mr-2"></div>
+                                        <span class="text-sm">Reserved</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="w-4 h-4 bg-yellow-500 rounded mr-2"></div>
+                                        <span class="text-sm">Held</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Interactive Floor Map -->
+                            <!-- @FUNCTIONALITY: This should implement interactive SVG-based floor map with zoom/pan capabilities -->
+                            <div class="bg-gray-50 rounded-xl p-8 border-2 border-gray-200 min-h-96 relative">
+                                <!-- Mock Table Layout -->
+                                <div class="grid grid-cols-6 gap-4 h-80">
+                                    <!-- Tables Row 1 -->
+                                    <div class="col-span-1 flex items-center justify-center">
+                                        <button class="w-16 h-12 bg-green-500 rounded-lg flex items-center justify-center text-white font-semibold hover:bg-green-600 transition-colors" 
+                                                data-event="click:selectTable" data-table-id="T1" data-capacity="2">
+                                            T1<br><span class="text-xs">2p</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-span-1 flex items-center justify-center">
+                                        <button class="w-16 h-12 bg-green-500 rounded-lg flex items-center justify-center text-white font-semibold hover:bg-green-600 transition-colors" 
+                                                data-event="click:selectTable" data-table-id="T2" data-capacity="2">
+                                            T2<br><span class="text-xs">2p</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-span-2 flex items-center justify-center">
+                                        <div class="text-gray-400 text-sm">Kitchen</div>
+                                    </div>
+                                    <div class="col-span-1 flex items-center justify-center">
+                                        <button class="w-16 h-12 bg-red-500 rounded-lg flex items-center justify-center text-white font-semibold cursor-not-allowed" 
+                                                disabled data-table-id="T3" data-capacity="4">
+                                            T3<br><span class="text-xs">4p</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-span-1 flex items-center justify-center">
+                                        <button class="w-16 h-12 bg-green-500 rounded-lg flex items-center justify-center text-white font-semibold hover:bg-green-600 transition-colors" 
+                                                data-event="click:selectTable" data-table-id="T4" data-capacity="4">
+                                            T4<br><span class="text-xs">4p</span>
+                                        </button>
+                                    </div>
+
+                                    <!-- Tables Row 2 -->
+                                    <div class="col-span-1 flex items-center justify-center">
+                                        <button class="w-20 h-16 bg-green-500 rounded-lg flex items-center justify-center text-white font-semibold hover:bg-green-600 transition-colors" 
+                                                data-event="click:selectTable" data-table-id="T5" data-capacity="6">
+                                            T5<br><span class="text-xs">6p</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-span-1 flex items-center justify-center">
+                                        <button class="w-20 h-16 bg-yellow-500 rounded-lg flex items-center justify-center text-white font-semibold cursor-not-allowed" 
+                                                disabled data-table-id="T6" data-capacity="6">
+                                            T6<br><span class="text-xs">6p</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-span-2 flex items-center justify-center">
+                                        <div class="text-gray-400 text-sm">Bar Area</div>
+                                    </div>
+                                    <div class="col-span-1 flex items-center justify-center">
+                                        <button class="w-16 h-12 bg-green-500 rounded-lg flex items-center justify-center text-white font-semibold hover:bg-green-600 transition-colors" 
+                                                data-event="click:selectTable" data-table-id="T7" data-capacity="2">
+                                            T7<br><span class="text-xs">2p</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-span-1 flex items-center justify-center">
+                                        <button class="w-16 h-12 bg-green-500 rounded-lg flex items-center justify-center text-white font-semibold hover:bg-green-600 transition-colors" 
+                                                data-event="click:selectTable" data-table-id="T8" data-capacity="3">
+                                            T8<br><span class="text-xs">3p</span>
+                                        </button>
+                                    </div>
+
+                                    <!-- Tables Row 3 -->
+                                    <div class="col-span-6 flex items-center justify-center space-x-4">
+                                        <button class="w-24 h-16 bg-green-500 rounded-lg flex items-center justify-center text-white font-semibold hover:bg-green-600 transition-colors" 
+                                                data-event="click:selectTable" data-table-id="T9" data-capacity="8">
+                                            T9<br><span class="text-xs">8p</span>
+                                        </button>
+                                        <button class="w-20 h-16 bg-green-500 rounded-lg flex items-center justify-center text-white font-semibold hover:bg-green-600 transition-colors" 
+                                                data-event="click:selectTable" data-table-id="T10" data-capacity="6">
+                                            T10<br><span class="text-xs">6p</span>
+                                        </button>
+                                        <button class="w-16 h-12 bg-red-500 rounded-lg flex items-center justify-center text-white font-semibold cursor-not-allowed" 
+                                                disabled data-table-id="T11" data-capacity="4">
+                                            T11<br><span class="text-xs">4p</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Map Controls -->
+                                <div class="absolute bottom-4 left-4 flex space-x-2">
+                                    <button class="bg-white rounded-lg p-2 shadow-md hover:shadow-lg transition-shadow" 
+                                            data-event="click:zoomIn">
+                                        <i class="fas fa-plus text-gray-600"></i>
+                                    </button>
+                                    <button class="bg-white rounded-lg p-2 shadow-md hover:shadow-lg transition-shadow" 
+                                            data-event="click:zoomOut">
+                                        <i class="fas fa-minus text-gray-600"></i>
+                                    </button>
+                                    <button class="bg-white rounded-lg p-2 shadow-md hover:shadow-lg transition-shadow" 
+                                            data-event="click:resetZoom">
+                                        <i class="fas fa-expand text-gray-600"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Booking Sidebar -->
+                    <div class="lg:col-span-1">
+                        <div class="bg-gray-50 rounded-xl p-6 sticky top-6">
+                            <h4 class="text-xl font-bold mb-6">Make Reservation</h4>
+                            
+                            <!-- Selected Table Info -->
+                            <div id="selectedTableInfo" class="hidden mb-6 p-4 bg-primary-50 rounded-lg border border-primary-200">
+                                <h5 class="font-semibold text-primary-700 mb-2">Selected Table</h5>
+                                <p class="text-sm text-primary-600" data-bind="selectedTable">Table T1 - 2 people</p>
+                            </div>
+
+                            <!-- Date & Time -->
+                            <div class="mb-6">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Date</label>
+                                <input type="date" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
+                                       data-bind="reservationDate" min="2024-01-15">
+                            </div>
+
+                            <div class="mb-6">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Time</label>
+                                <select class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500" 
+                                        data-bind="reservationTime">
+                                    <option>6:00 PM</option>
+                                    <option>6:30 PM</option>
+                                    <option>7:00 PM</option>
+                                    <option>7:30 PM</option>
+                                    <option>8:00 PM</option>
+                                    <option>8:30 PM</option>
+                                    <option>9:00 PM</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-6">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Party Size</label>
+                                <select class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500" 
+                                        data-bind="partySize">
+                                    <option>1 person</option>
+                                    <option>2 people</option>
+                                    <option>3 people</option>
+                                    <option>4 people</option>
+                                    <option>5 people</option>
+                                    <option>6+ people</option>
+                                </select>
+                            </div>
+
+                            <!-- Special Requests -->
+                            <div class="mb-6">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Special Requests</label>
+                                <textarea class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 resize-none" 
+                                          rows="3" placeholder="Window seat, birthday celebration, etc." data-bind="specialRequests"></textarea>
+                            </div>
+
+                            <!-- Points & Discounts -->
+                            <div class="mb-6 p-4 bg-accent-50 rounded-lg border border-accent-200">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm font-semibold text-accent-700">Your Points</span>
+                                    <span class="text-accent-700 font-bold" data-bind="userPoints">1,250 pts</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <input type="checkbox" id="useDiscount" class="rounded border-accent-300 text-accent-500 focus:ring-accent-500" 
+                                           data-bind="useDiscount">
+                                    <label for="useDiscount" class="text-sm text-accent-600">Use 500 pts for 15% off</label>
+                                </div>
+                            </div>
+
+                            <button class="w-full bg-primary-500 text-white py-4 rounded-lg hover:bg-primary-600 transition-colors font-semibold text-lg" 
+                                    data-event="click:proceedToBooking" disabled id="bookingBtn">
+                                Select a Table First
+                            </button>
+
+                            <p class="text-xs text-gray-500 mt-4 text-center">
+                                By proceeding, you agree to our booking terms and cancellation policy.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @END_COMPONENT: RestaurantDetailModal -->
+
+<!-- @COMPONENT: BookingConfirmationModal -->
+<div id="bookingModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+    <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-8">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-check text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Reservation Confirmed!</h3>
+                <p class="text-gray-600 mb-6">Your table has been reserved. Confirmation details sent via SMS and email.</p>
+                
+                <!-- Reservation Details -->
+                <div class="bg-gray-50 rounded-lg p-4 mb-6 text-left">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm text-gray-600">Restaurant</span>
+                        <span class="font-semibold" data-bind="booking.restaurant">Zaatar & Co.</span>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm text-gray-600">Table</span>
+                        <span class="font-semibold" data-bind="booking.table">T5 (6 people)</span>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm text-gray-600">Date & Time</span>
+                        <span class="font-semibold" data-bind="booking.datetime">Jan 20, 7:30 PM</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-600">Confirmation</span>
+                        <span class="font-semibold text-primary-600" data-bind="booking.code">#RES-4A7B9</span>
+                    </div>
+                </div>
+
+                <!-- Points Earned -->
+                <div class="bg-accent-50 rounded-lg p-4 mb-6">
+                    <div class="flex items-center justify-center space-x-2">
+                        <i class="fas fa-star text-accent-500"></i>
+                        <span class="text-accent-700 font-semibold">+120 points earned!</span>
+                    </div>
+                    <p class="text-xs text-accent-600 mt-1">Total balance: 1,370 points</p>
+                </div>
+
+                <div class="flex space-x-4">
+                    <button class="flex-1 bg-gray-200 text-gray-700 py-3 rounded-lg hover:bg-gray-300 transition-colors" 
+                            data-event="click:closeBookingModal">
+                        Close
+                    </button>
+                    <button class="flex-1 bg-primary-500 text-white py-3 rounded-lg hover:bg-primary-600 transition-colors" 
+                            data-event="click:viewReservations">
+                        View Reservations
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @END_COMPONENT: BookingConfirmationModal -->
+
+<!-- @COMPONENT: UserDashboard -->
+<div id="userDashboard" class="fixed inset-0 bg-white z-50 hidden overflow-y-auto">
+    <div class="min-h-screen">
+        <!-- Dashboard Header -->
+        <header class="bg-white shadow-sm border-b border-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-4">
+                    <h1 class="text-2xl font-bold text-gray-900">My Dashboard</h1>
+                    <button class="text-gray-500 hover:text-gray-700" data-event="click:closeDashboard">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- User Profile & Points -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-2xl shadow-lg p-6 mb-6">
+                        <div class="text-center mb-6">
+                            <div class="w-20 h-20 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-white text-2xl font-bold" data-bind="user.initials">AM</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900" data-bind="user.name">Ahmad Mahmoud</h3>
+                            <p class="text-gray-600" data-bind="user.email">ahmad.mahmoud@email.com</p>
+                        </div>
+
+                        <!-- Points & Tier -->
+                        <div class="bg-gradient-to-r from-accent-500 to-accent-600 rounded-xl p-6 text-white mb-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-accent-100">Your Points</span>
+                                <span class="text-2xl font-bold" data-bind="user.points">1,370</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-accent-100">Tier</span>
+                                <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm font-semibold" 
+                                      data-bind="user.tier">Gold Member</span>
+                            </div>
+                            <div class="mt-4">
+                                <div class="bg-white bg-opacity-20 rounded-full h-2">
+                                    <div class="bg-white h-2 rounded-full w-3/4"></div>
+                                </div>
+                                <p class="text-xs text-accent-100 mt-2">630 points to Platinum</p>
+                            </div>
+                        </div>
+
+                        <!-- Available Discounts -->
+                        <div class="mb-6">
+                            <h4 class="font-bold text-gray-900 mb-4">Available Discounts</h4>
+                            <div class="space-y-3" data-mock="true">
+                                <div class="border border-green-200 bg-green-50 rounded-lg p-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm font-semibold text-green-700">15% Off</span>
+                                        <span class="text-xs text-green-600">500 pts</span>
+                                    </div>
+                                    <p class="text-xs text-green-600">Valid at participating restaurants</p>
+                                </div>
+                                <div class="border border-blue-200 bg-blue-50 rounded-lg p-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm font-semibold text-blue-700">Free Appetizer</span>
+                                        <span class="text-xs text-blue-600">800 pts</span>
+                                    </div>
+                                    <p class="text-xs text-blue-600">Select premium restaurants</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reservations -->
+                <div class="lg:col-span-2">
+                    <!-- Upcoming Reservations -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 mb-8">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">Upcoming Reservations</h3>
+                        <div class="space-y-4" data-mock="true">
+                            <div class="border border-gray-200 rounded-xl p-4 hover:shadow-md transition-shadow">
+                                <div class="flex justify-between items-start">
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gray-900">Zaatar & Co.</h4>
+                                        <p class="text-gray-600 text-sm">Table T5 • 6 people</p>
+                                        <p class="text-gray-600 text-sm">January 20, 2024 at 7:30 PM</p>
+                                        <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mt-2">Confirmed</span>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <button class="text-primary-600 hover:text-primary-700 text-sm font-medium" 
+                                                data-event="click:modifyReservation">
+                                            Modify
+                                        </button>
+                                        <button class="text-red-600 hover:text-red-700 text-sm font-medium" 
+                                                data-event="click:cancelReservation">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="border border-gray-200 rounded-xl p-4 hover:shadow-md transition-shadow">
+                                <div class="flex justify-between items-start">
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gray-900">The Olive Table</h4>
+                                        <p class="text-gray-600 text-sm">Table T12 • 2 people</p>
+                                        <p class="text-gray-600 text-sm">January 25, 2024 at 8:00 PM</p>
+                                        <span class="inline-block bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full mt-2">Pending</span>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <button class="text-primary-600 hover:text-primary-700 text-sm font-medium" 
+                                                data-event="click:modifyReservation">
+                                            Modify
+                                        </button>
+                                        <button class="text-red-600 hover:text-red-700 text-sm font-medium" 
+                                                data-event="click:cancelReservation">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Past Reservations -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">Past Reservations</h3>
+                        <div class="space-y-4" data-mock="true">
+                            <div class="border border-gray-200 rounded-xl p-4">
+                                <div class="flex justify-between items-start">
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gray-900">Saffron Lane</h4>
+                                        <p class="text-gray-600 text-sm">Table T3 • 4 people</p>
+                                        <p class="text-gray-600 text-sm">January 10, 2024 at 6:30 PM</p>
+                                        <span class="inline-block bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full mt-2">Completed</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <div class="text-right">
+                                            <div class="flex items-center">
+                                                <span class="text-yellow-500">★★★★★</span>
+                                            </div>
+                                            <p class="text-xs text-gray-600">+120 points earned</p>
+                                        </div>
+                                        <button class="text-primary-600 hover:text-primary-700 text-sm font-medium" 
+                                                data-event="click:rateRestaurant">
+                                            Review
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @END_COMPONENT: UserDashboard -->
+
+<!-- @COMPONENT: ManagerDashboard -->
+<div id="managerDashboard" class="fixed inset-0 bg-white z-50 hidden overflow-y-auto">
+    <div class="min-h-screen">
+        <!-- Manager Header -->
+        <header class="bg-primary-600 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-6">
+                    <div>
+                        <h1 class="text-3xl font-bold">Restaurant Manager</h1>
+                        <p class="text-primary-100" data-bind="restaurant.name">Zaatar & Co. - Management Dashboard</p>
+                    </div>
+                    <button class="text-primary-100 hover:text-white" data-event="click:closeManagerDashboard">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-blue-100">
+                            <i class="fas fa-calendar-check text-blue-600 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm font-medium text-gray-600">Today's Reservations</p>
+                            <p class="text-2xl font-bold text-gray-900" data-bind="stats.todayReservations">24</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-green-100">
+                            <i class="fas fa-chair text-green-600 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm font-medium text-gray-600">Available Tables</p>
+                            <p class="text-2xl font-bold text-gray-900" data-bind="stats.availableTables">8/16</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-yellow-100">
+                            <i class="fas fa-star text-yellow-600 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm font-medium text-gray-600">Average Rating</p>
+                            <p class="text-2xl font-bold text-gray-900" data-bind="stats.avgRating">4.8</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-purple-100">
+                            <i class="fas fa-users text-purple-600 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm font-medium text-gray-600">Capacity Usage</p>
+                            <p class="text-2xl font-bold text-gray-900" data-bind="stats.capacityUsage">75%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Floor Map Editor -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-2xl shadow-lg p-6 mb-8">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-xl font-bold text-gray-900">Floor Map Editor</h3>
+                            <div class="flex space-x-2">
+                                <button class="bg-primary-500 text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors" 
+                                        data-event="click:addTable">
+                                    Add Table
+                                </button>
+                                <button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors" 
+                                        data-event="click:saveFloorPlan">
+                                    Save Changes
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- @FUNCTIONALITY: This should implement drag-and-drop table management -->
+                        <div class="bg-gray-50 rounded-xl p-6 border-2 border-dashed border-gray-300 min-h-96">
+                            <div class="grid grid-cols-6 gap-4 h-80">
+                                <!-- Editable Table Layout -->
+                                <div class="col-span-1 flex items-center justify-center">
+                                    <div class="w-16 h-12 bg-green-500 rounded-lg flex items-center justify-center text-white font-semibold relative group cursor-move" 
+                                         draggable="true" data-table-id="T1">
+                                        T1<br><span class="text-xs">2p</span>
+                                        <button class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity" 
+                                                data-event="click:deleteTable">×</button>
+                                    </div>
+                                </div>
+                                <div class="col-span-1 flex items-center justify-center">
+                                    <div class="w-16 h-12 bg-green-500 rounded-lg flex items-center justify-center text-white font-semibold relative group cursor-move" 
+                                         draggable="true" data-table-id="T2">
+                                        T2<br><span class="text-xs">2p</span>
+                                        <button class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity" 
+                                                data-event="click:deleteTable">×</button>
+                                    </div>
+                                </div>
+                                <!-- More tables would go here -->
+                            </div>
+                        </div>
+
+                        <!-- Table Properties Panel -->
+                        <div class="mt-6 p-4 bg-gray-50 rounded-lg hidden" id="tablePropertiesPanel">
+                            <h4 class="font-semibold text-gray-900 mb-4">Table Properties</h4>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Table Name</label>
+                                    <input type="text" class="w-full px-3 py-2 border border-gray-200 rounded-lg" 
+                                           data-bind="editTable.name" placeholder="T1">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Capacity</label>
+                                    <select class="w-full px-3 py-2 border border-gray-200 rounded-lg" data-bind="editTable.capacity">
+                                        <option>2</option>
+                                        <option>4</option>
+                                        <option>6</option>
+                                        <option>8</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Zone</label>
+                                    <select class="w-full px-3 py-2 border border-gray-200 rounded-lg" data-bind="editTable.zone">
+                                        <option>Main Dining</option>
+                                        <option>Window Seats</option>
+                                        <option>Bar Area</option>
+                                        <option>Terrace</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Min Spend (LBP)</label>
+                                    <input type="number" class="w-full px-3 py-2 border border-gray-200 rounded-lg" 
+                                           data-bind="editTable.minSpend" placeholder="0">
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4 mt-4">
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="rounded border-gray-300" data-bind="editTable.smoking">
+                                    <span class="ml-2 text-sm text-gray-700">Smoking allowed</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="rounded border-gray-300" data-bind="editTable.accessible">
+                                    <span class="ml-2 text-sm text-gray-700">Wheelchair accessible</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Today's Reservations -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">Today's Reservations</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="border-b border-gray-200">
+                                        <th class="text-left py-3 px-2 text-sm font-semibold text-gray-700">Time</th>
+                                        <th class="text-left py-3 px-2 text-sm font-semibold text-gray-700">Table</th>
+                                        <th class="text-left py-3 px-2 text-sm font-semibold text-gray-700">Guest</th>
+                                        <th class="text-left py-3 px-2 text-sm font-semibold text-gray-700">Party</th>
+                                        <th class="text-left py-3 px-2 text-sm font-semibold text-gray-700">Status</th>
+                                        <th class="text-left py-3 px-2 text-sm font-semibold text-gray-700">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100" data-mock="true">
+                                    <tr>
+                                        <td class="py-3 px-2 text-sm">6:30 PM</td>
+                                        <td class="py-3 px-2 text-sm font-medium">T5</td>
+                                        <td class="py-3 px-2 text-sm">Ahmad Mahmoud</td>
+                                        <td class="py-3 px-2 text-sm">6</td>
+                                        <td class="py-3 px-2">
+                                            <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Confirmed</span>
+                                        </td>
+                                        <td class="py-3 px-2">
+                                            <button class="text-primary-600 hover:text-primary-700 text-sm" 
+                                                    data-event="click:markSeated">
+                                                Mark Seated
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-2 text-sm">7:00 PM</td>
+                                        <td class="py-3 px-2 text-sm font-medium">T2</td>
+                                        <td class="py-3 px-2 text-sm">Sara Khalil</td>
+                                        <td class="py-3 px-2 text-sm">2</td>
+                                        <td class="py-3 px-2">
+                                            <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Seated</span>
+                                        </td>
+                                        <td class="py-3 px-2">
+                                            <button class="text-green-600 hover:text-green-700 text-sm" 
+                                                    data-event="click:markCompleted">
+                                                Mark Completed
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Management Tools -->
+                <div class="lg:col-span-1">
+                    <!-- Schedule Management -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 mb-6">
+                        <h4 class="text-lg font-bold text-gray-900 mb-4">Operating Hours</h4>
+                        <div class="space-y-4" data-mock="true">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-700">Monday</span>
+                                <span class="text-sm font-medium">11:00 AM - 11:00 PM</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-700">Tuesday</span>
+                                <span class="text-sm font-medium">11:00 AM - 11:00 PM</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-700">Wednesday</span>
+                                <span class="text-sm font-medium">11:00 AM - 11:00 PM</span>
+                            </div>
+                        </div>
+                        <button class="w-full mt-4 bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition-colors" 
+                                data-event="click:editSchedule">
+                            Edit Schedule
+                        </button>
+                    </div>
+
+                    <!-- Offers Management -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 mb-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h4 class="text-lg font-bold text-gray-900">Active Offers</h4>
+                            <button class="text-primary-600 hover:text-primary-700 text-sm font-medium" 
+                                    data-event="click:createOffer">
+                                Create New
+                            </button>
+                        </div>
+                        <div class="space-y-3" data-mock="true">
+                            <div class="border border-green-200 bg-green-50 rounded-lg p-3">
+                                <h5 class="font-semibold text-green-700">15% Off Dinner</h5>
+                                <p class="text-xs text-green-600">500 points required</p>
+                                <p class="text-xs text-green-600">Valid until Jan 31</p>
+                            </div>
+                            <div class="border border-blue-200 bg-blue-50 rounded-lg p-3">
+                                <h5 class="font-semibold text-blue-700">Free Appetizer</h5>
+                                <p class="text-xs text-blue-600">800 points required</p>
+                                <p class="text-xs text-blue-600">Valid until Feb 15</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reviews Summary -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6">
+                        <h4 class="text-lg font-bold text-gray-900 mb-4">Recent Reviews</h4>
+                        <div class="space-y-4" data-mock="true">
+                            <div class="border-b border-gray-100 pb-3">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-yellow-500">★★★★★</span>
+                                    <span class="text-xs text-gray-500">2 hours ago</span>
+                                </div>
+                                <p class="text-sm text-gray-700">"Amazing food and service! The mezze platter was incredible."</p>
+                                <p class="text-xs text-gray-500 mt-1">- Ahmad M.</p>
+                            </div>
+                            <div class="border-b border-gray-100 pb-3">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-yellow-500">★★★★☆</span>
+                                    <span class="text-xs text-gray-500">1 day ago</span>
+                                </div>
+                                <p class="text-sm text-gray-700">"Great atmosphere, food was good but service was a bit slow."</p>
+                                <p class="text-xs text-gray-500 mt-1">- Sara K.</p>
+                            </div>
+                        </div>
+                        <button class="w-full mt-4 bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition-colors" 
+                                data-event="click:viewAllReviews">
+                            View All Reviews
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @END_COMPONENT: ManagerDashboard -->
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-300 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-utensils text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold text-white">TableMap</span>
+                </div>
+                <p class="text-gray-400 text-sm">Discover and reserve tables at Lebanon's finest restaurants with interactive table selection.</p>
+            </div>
+            
+            <div>
+                <h4 class="text-white font-semibold mb-4">For Diners</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-white transition-colors">Find Restaurants</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">How It Works</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Loyalty Program</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Mobile App</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="text-white font-semibold mb-4">For Restaurants</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-white transition-colors">Join TableMap</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Manager Dashboard</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Features</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Pricing</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="text-white font-semibold mb-4">Contact</h4>
+                <div class="space-y-2 text-sm">
+                    <p>WhatsApp: +961 1 234 567</p>
+                    <p>Email: support@tablemap.lb</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+            <p>&copy; 2024 TableMap Lebanon. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+(function() {
+    // TODO: Implement business logic, API calls, and state management
+    
+    // Mock state management
+    let currentUser = null;
+    let selectedTable = null;
+    let currentRestaurant = null;
+    
+    // Modal management
+    function openModal(modalId) {
+        document.getElementById(modalId).classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal(modalId) {
+        document.getElementById(modalId).classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+    
+    // Restaurant modal interactions
+    document.addEventListener('click', function(e) {
+        if (e.target.dataset.event === 'click:openRestaurant' || e.target.closest('[data-event="click:viewTables"]')) {
+            openModal('restaurantModal');
+        }
+        
+        if (e.target.dataset.event === 'click:closeModal') {
+            closeModal('restaurantModal');
+        }
+        
+        if (e.target.dataset.event === 'click:stopPropagation') {
+            e.stopPropagation();
+        }
+        
+        // Table selection
+        if (e.target.dataset.event === 'click:selectTable') {
+            // Remove previous selection
+            document.querySelectorAll('[data-event="click:selectTable"]').forEach(btn => {
+                btn.classList.remove('ring-4', 'ring-primary-300');
+            });
+            
+            // Add selection to clicked table
+            e.target.classList.add('ring-4', 'ring-primary-300');
+            
+            // Update selected table info
+            const tableId = e.target.dataset.tableId;
+            const capacity = e.target.dataset.capacity;
+            selectedTable = { id: tableId, capacity: capacity };
+            
+            // Show selected table info
+            const infoPanel = document.getElementById('selectedTableInfo');
+            infoPanel.classList.remove('hidden');
+            infoPanel.querySelector('[data-bind="selectedTable"]').textContent = `Table ${tableId} - ${capacity} people`;
+            
+            // Enable booking button
+            const bookingBtn = document.getElementById('bookingBtn');
+            bookingBtn.disabled = false;
+            bookingBtn.textContent = 'Proceed to Booking';
+            bookingBtn.classList.remove('bg-gray-400');
+            bookingBtn.classList.add('bg-primary-500', 'hover:bg-primary-600');
+        }
+        
+        // Proceed to booking
+        if (e.target.dataset.event === 'click:proceedToBooking' && selectedTable) {
+            closeModal('restaurantModal');
+            openModal('bookingModal');
+        }
+        
+        // Close booking modal
+        if (e.target.dataset.event === 'click:closeBookingModal') {
+            closeModal('bookingModal');
+        }
+        
+        // View reservations
+        if (e.target.dataset.event === 'click:viewReservations') {
+            closeModal('bookingModal');
+            openModal('userDashboard');
+        }
+        
+        // Dashboard management
+        if (e.target.dataset.event === 'click:closeDashboard') {
+            closeModal('userDashboard');
+        }
+        
+        if (e.target.dataset.event === 'click:closeManagerDashboard') {
+            closeModal('managerDashboard');
+        }
+        
+        // Demo: Open manager dashboard
+        if (e.target.textContent === 'Manager Dashboard' || e.target.closest('.fa-cog')) {
+            openModal('managerDashboard');
+        }
+    });
+    
+    // Close modals when clicking outside
+    document.addEventListener('click', function(e) {
+        if (e.target.id === 'restaurantModal') {
+            closeModal('restaurantModal');
+        }
+        if (e.target.id === 'bookingModal') {
+            closeModal('bookingModal');
+        }
+    });
+    
+    // Language toggle simulation
+    document.querySelectorAll('[data-event="click:toggleLanguage"]').forEach(toggle => {
+        toggle.addEventListener('click', function() {
+            const slider = this.querySelector('div');
+            slider.classList.toggle('translate-x-4');
+            // TODO: Implement actual language switching
+        });
+    });
+    
+    // Currency toggle simulation
+    document.querySelectorAll('[data-event="click:toggleCurrency"]').forEach(toggle => {
+        toggle.addEventListener('click', function() {
+            const slider = this.querySelector('div');
+            slider.classList.toggle('translate-x-4');
+            // TODO: Implement actual currency switching
+        });
+    });
+    
+    // Search functionality placeholder
+    document.querySelector('[data-event="click:searchRestaurants"]')?.addEventListener('click', function() {
+        const query = document.querySelector('[data-bind="searchQuery"]').value;
+        console.log('Searching for:', query);
+        // TODO: Implement actual search functionality
+    });
+    
+    // Mock authentication
+    document.querySelector('[data-event="click:openAuth"]')?.addEventListener('click', function() {
+        // Simulate login
+        currentUser = {
+            name: 'Ahmad Mahmoud',
+            email: 'ahmad.mahmoud@email.com',
+            points: 1370,
+            tier: 'Gold Member'
+        };
+        
+        this.textContent = 'My Account';
+        this.dataset.event = 'click:openAccount';
+        
+        // Show user dashboard on subsequent clicks
+        this.addEventListener('click', function() {
+            openModal('userDashboard');
+        });
+    });
+})();
+</script>
+
+</body>
+</html>

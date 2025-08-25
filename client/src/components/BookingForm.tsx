@@ -13,6 +13,7 @@ import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { isUnauthorizedError } from "@/lib/authUtils";
 import { useAuth } from "@/hooks/useAuth";
+import LoginModal from "./LoginModal";
 
 interface BookingFormProps {
   restaurant: any;
@@ -25,6 +26,7 @@ export default function BookingForm({ restaurant, table, onComplete, onCancel }:
   const { user } = useAuth();
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  const [showLoginModal, setShowLoginModal] = useState(false);
   
   const [bookingData, setBookingData] = useState({
     date: new Date().toISOString().split('T')[0],
@@ -46,13 +48,11 @@ export default function BookingForm({ restaurant, table, onComplete, onCancel }:
     onError: (error) => {
       if (isUnauthorizedError(error)) {
         toast({
-          title: "Unauthorized",
-          description: "You are logged out. Logging in again...",
+          title: "Authentication Required",
+          description: "Please log in to complete your reservation.",
           variant: "destructive",
         });
-        setTimeout(() => {
-          window.location.href = "/api/login";
-        }, 500);
+        setShowLoginModal(true);
         return;
       }
       toast({
@@ -258,6 +258,17 @@ export default function BookingForm({ restaurant, table, onComplete, onCancel }:
       <p className="text-xs text-gray-500 text-center">
         By proceeding, you agree to our booking terms and cancellation policy.
       </p>
+
+      {/* Login Modal */}
+      <LoginModal 
+        isOpen={showLoginModal} 
+        onClose={() => setShowLoginModal(false)}
+        onSuccess={() => {
+          setShowLoginModal(false);
+          // Refresh the page to show authenticated content
+          window.location.reload();
+        }}
+      />
     </form>
   );
 }

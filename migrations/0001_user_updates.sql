@@ -1,0 +1,37 @@
+DO $$ BEGIN
+  -- Create enums if they don't exist
+  CREATE TYPE user_role AS ENUM ('USER', 'RESTAURANT_MANAGER', 'ADMIN');
+EXCEPTION
+  WHEN duplicate_object THEN NULL;
+END $$;
+
+DO $$ BEGIN
+  CREATE TYPE user_tier AS ENUM ('BRONZE', 'SILVER', 'GOLD', 'PLATINUM');
+EXCEPTION
+  WHEN duplicate_object THEN NULL;
+END $$;
+
+DO $$ BEGIN
+  CREATE TYPE reservation_status AS ENUM ('PENDING', 'CONFIRMED', 'SEATED', 'COMPLETED', 'CANCELLED', 'NO_SHOW');
+EXCEPTION
+  WHEN duplicate_object THEN NULL;
+END $$;
+
+-- Update users table
+ALTER TABLE users
+ADD COLUMN IF NOT EXISTS password VARCHAR(255),
+ADD COLUMN IF NOT EXISTS name VARCHAR(255),
+ADD COLUMN IF NOT EXISTS phone VARCHAR(255),
+ADD COLUMN IF NOT EXISTS phone_verified BOOLEAN DEFAULT FALSE,
+ALTER COLUMN email SET NOT NULL,
+DROP COLUMN IF EXISTS first_name,
+DROP COLUMN IF EXISTS last_name;
+
+-- Convert role and tier columns to enum type
+ALTER TABLE users
+ALTER COLUMN role DROP DEFAULT,
+ALTER COLUMN role TYPE user_role USING role::user_role,
+ALTER COLUMN role SET DEFAULT 'USER',
+ALTER COLUMN tier DROP DEFAULT,
+ALTER COLUMN tier TYPE user_tier USING tier::user_tier,
+ALTER COLUMN tier SET DEFAULT 'BRONZE';

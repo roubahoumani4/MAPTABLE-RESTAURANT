@@ -16,9 +16,17 @@ function Router() {
 
   return (
     <Switch>
-      {isLoading || !isAuthenticated ? (
-        <Route path="/" component={Landing} />
+      {isLoading ? (
+        // Show loading state
+        <Route path="*" component={Landing} />
+      ) : !isAuthenticated ? (
+        // Not authenticated - show only landing page
+        <>
+          <Route path="/" component={Landing} />
+          <Route path="*" component={Landing} />
+        </>
       ) : (
+        // Authenticated - show full app
         <>
           <Route path="/" component={Home} />
           <Route path="/restaurant/:slug" component={RestaurantDetail} />

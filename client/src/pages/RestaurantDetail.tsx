@@ -9,30 +9,57 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import Header from "@/components/Header";
 import FloorMap from "@/components/FloorMap";
 import BookingForm from "@/components/BookingForm";
-import { Star, MapPin, Phone, Clock, Users, Utensils } from "lucide-react";
+import LoginModal from "@/components/LoginModal";
+import Gallery from "@/components/Gallery";
+import { Star, MapPin, Phone, Clock, Users, Utensils, FileText } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { isUnauthorizedError } from "@/lib/authUtils";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function RestaurantDetail() {
   const { slug } = useParams();
   const { toast } = useToast();
+  const { isAuthenticated } = useAuth();
   const queryClient = useQueryClient();
   const [selectedTable, setSelectedTable] = useState<any>(null);
   const [showBookingModal, setShowBookingModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showMenuModal, setShowMenuModal] = useState(false);
 
   const { data: restaurant, isLoading } = useQuery({
-    queryKey: ["/api/restaurants", slug],
+    queryKey: ["restaurants", slug],
+    queryFn: async () => {
+      const response = await fetch(`/api/restaurants/${slug}`);
+      if (!response.ok) {
+        throw new Error("Restaurant not found");
+      }
+      return response.json();
+    },
     enabled: !!slug,
   });
 
   const { data: tables = [] } = useQuery({
-    queryKey: ["/api/restaurants", restaurant?.id, "tables"],
+    queryKey: ["restaurants", restaurant?.id, "tables"],
+    queryFn: async () => {
+      const response = await fetch(`/api/restaurants/${restaurant.id}/tables`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch tables");
+      }
+      return response.json();
+    },
     enabled: !!restaurant?.id,
   });
 
   const { data: reviews = [] } = useQuery({
-    queryKey: ["/api/restaurants", restaurant?.id, "reviews"],
+    queryKey: ["restaurants", restaurant?.id, "reviews"],
+    queryFn: async () => {
+      const response = await fetch(`/api/restaurants/${restaurant.id}/reviews`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch reviews");
+      }
+      return response.json();
+    },
     enabled: !!restaurant?.id,
   });
 
@@ -46,13 +73,11 @@ export default function RestaurantDetail() {
     onError: (error) => {
       if (isUnauthorizedError(error)) {
         toast({
-          title: "Unauthorized",
-          description: "You are logged out. Logging in again...",
+          title: "Authentication Required",
+          description: "Please log in to reserve a table.",
           variant: "destructive",
         });
-        setTimeout(() => {
-          window.location.href = "/api/login";
-        }, 500);
+        setShowLoginModal(true);
         return;
       }
       toast({
@@ -78,7 +103,7 @@ export default function RestaurantDetail() {
   const handleBookingComplete = () => {
     setShowBookingModal(false);
     setSelectedTable(null);
-    queryClient.invalidateQueries({ queryKey: ["/api/restaurants", restaurant?.id, "tables"] });
+    queryClient.invalidateQueries({ queryKey: ["restaurants", restaurant?.id, "tables"] });
     toast({
       title: "Reservation Confirmed!",
       description: "Your table has been reserved. Check your email for confirmation.",
@@ -193,6 +218,9 @@ export default function RestaurantDetail() {
               </CardContent>
             </Card>
 
+            {/* Gallery Section */}
+            <Gallery images={restaurant.images || []} restaurantName={restaurant.name} />
+
             {/* Floor Map */}
             <Card>
               <CardContent className="p-6">
@@ -291,6 +319,25 @@ export default function RestaurantDetail() {
 
                 <Separator className="my-6" />
 
+                {/* Menu Button */}
+                <div className="mb-6">
+                  <Button 
+                    onClick={() => {
+                      // Show menu modal for all restaurants
+                      setShowMenuModal(true);
+                    }}
+                    className="w-full bg-teal-600 hover:bg-teal-700 text-white flex items-center justify-center space-x-2"
+                  >
+                    <FileText className="h-4 w-4" />
+                    <span>View Menu & Prices</span>
+                  </Button>
+                  <p className="text-xs text-gray-500 text-center mt-2">
+                    View our complete menu with prices
+                  </p>
+                </div>
+
+                <Separator className="my-6" />
+
                 <div className="text-center">
                   <div className="flex items-center justify-center space-x-2 mb-4">
                     <Users className="h-5 w-5 text-green-600" />
@@ -323,6 +370,47 @@ export default function RestaurantDetail() {
               onCancel={() => setShowBookingModal(false)}
             />
           )}
+        </DialogContent>
+      </Dialog>
+
+      {/* Login Modal */}
+      <LoginModal 
+        isOpen={showLoginModal} 
+        onClose={() => setShowLoginModal(false)}
+        onSuccess={() => {
+          setShowLoginModal(false);
+          // Refresh the page to show authenticated content
+          window.location.reload();
+        }}
+      />
+
+      {/* Menu Modal */}
+      <Dialog open={showMenuModal} onOpenChange={setShowMenuModal}>
+        <DialogContent className="max-w-4xl w-full h-[80vh]">
+          <DialogHeader>
+            <DialogTitle className="text-xl font-bold">
+              {restaurant?.name} - Menu & Prices
+            </DialogTitle>
+          </DialogHeader>
+          
+          <div className="flex-1 p-6 pt-0">
+            {/* Sample Menu Content */}
+            <div className="space-y-6">
+              <div className="text-center py-8">
+                <FileText className="h-16 w-16 text-teal-600 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Restaurant Menu</h3>
+                <p className="text-gray-600 mb-4">
+                  This is a sample menu for {restaurant?.name}. In a real application, 
+                  this would display the actual menu items with prices.
+                </p>
+                <div className="bg-gray-50 rounded-lg p-4 text-sm text-gray-500">
+                  <p>Menu items and prices would be displayed here</p>
+                  <p>This could include appetizers, main courses, desserts, and beverages</p>
+                  <p>Each item would show the name, description, and price</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </DialogContent>
       </Dialog>
     </div>

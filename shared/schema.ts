@@ -26,16 +26,22 @@ export const sessions = pgTable(
   (table) => [index("IDX_session_expire").on(table.expire)],
 );
 
+// Enums
+export const userRoleEnum = pgEnum('user_role', ['USER', 'RESTAURANT_MANAGER', 'ADMIN']);
+export const userTierEnum = pgEnum('user_tier', ['BRONZE', 'SILVER', 'GOLD', 'PLATINUM']);
+
 // User storage table.
 export const users = pgTable("users", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  email: varchar("email").unique(),
-  firstName: varchar("first_name"),
-  lastName: varchar("last_name"),
-  profileImageUrl: varchar("profile_image_url"),
-  role: varchar("role").default("USER").notNull(), // USER, RESTAURANT_MANAGER, ADMIN
+  email: varchar("email").notNull().unique(),
+  password: varchar("password").notNull(),
+  name: varchar("name").notNull(),
+  phone: varchar("phone"),
+  role: userRoleEnum("role").default("USER").notNull(),
   points: integer("points").default(0).notNull(),
-  tier: varchar("tier").default("BRONZE").notNull(), // BRONZE, SILVER, GOLD, PLATINUM
+  tier: userTierEnum("tier").default("BRONZE").notNull(),
+  profileImageUrl: varchar("profile_image_url"),
+  phoneVerified: boolean("phone_verified").default(false).notNull(),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });
@@ -264,6 +270,8 @@ export const insertOfferSchema = createInsertSchema(offers).omit({
 });
 
 // Types
+export type UserRole = typeof userRoleEnum.enumValues[number];
+export type UserTier = typeof userTierEnum.enumValues[number];
 export type UpsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
 export type Restaurant = typeof restaurants.$inferSelect;

@@ -127,6 +127,105 @@
   [dir="rtl"] .font-arabic {
     font-family: 'Amiri', serif;
   }
+
+  /* RTL specific adjustments */
+  .rtl {
+    direction: rtl;
+  }
+
+  .rtl .space-x-2 > * + * {
+    margin-left: 0;
+    margin-right: 0.5rem;
+  }
+
+  .rtl .space-x-4 > * + * {
+    margin-left: 0;
+    margin-right: 1rem;
+  }
+
+  .rtl .space-x-6 > * + * {
+    margin-left: 0;
+    margin-right: 1.5rem;
+  }
+
+  .rtl .space-x-8 > * + * {
+    margin-left: 0;
+    margin-right: 2rem;
+  }
+
+  .rtl .ml-1 {
+    margin-left: 0;
+    margin-right: 0.25rem;
+  }
+
+  .rtl .mr-1 {
+    margin-right: 0;
+    margin-left: 0.25rem;
+  }
+
+  .rtl .ml-2 {
+    margin-left: 0;
+    margin-right: 0.5rem;
+  }
+
+  .rtl .mr-2 {
+    margin-right: 0;
+    margin-left: 0.5rem;
+  }
+
+  .rtl .ml-4 {
+    margin-left: 0;
+    margin-right: 1rem;
+  }
+
+  .rtl .mr-4 {
+    margin-right: 0;
+    margin-left: 1rem;
+  }
+
+  .rtl .pl-4 {
+    padding-left: 0;
+    padding-right: 1rem;
+  }
+
+  .rtl .pr-4 {
+    padding-right: 0;
+    padding-left: 1rem;
+  }
+
+  .rtl .pl-6 {
+    padding-left: 0;
+    padding-right: 1.5rem;
+  }
+
+  .rtl .pr-6 {
+    padding-right: 0;
+    padding-left: 1.5rem;
+  }
+
+  .rtl .text-left {
+    text-align: right;
+  }
+
+  .rtl .text-right {
+    text-align: left;
+  }
+
+  .rtl .justify-start {
+    justify-content: flex-end;
+  }
+
+  .rtl .justify-end {
+    justify-content: flex-start;
+  }
+
+  .rtl .items-start {
+    align-items: flex-end;
+  }
+
+  .rtl .items-end {
+    align-items: flex-start;
+  }
 }
 
 @layer components {

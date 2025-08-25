@@ -1,33 +1,107 @@
-import type { Express } from "express";
+import type { Express, Request, Response, NextFunction, RequestHandler } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { setupAuth, isAuthenticated } from "./replitAuth";
+import { setupAuth as setupReplitAuth, isAuthenticated as replitIsAuthenticated } from "./replitAuth";
+import { setupAuth as setupLocalAuth, isAuthenticated as localIsAuthenticated } from "./localAuth";
 import { 
   insertRestaurantSchema, 
   insertTableSchema, 
   insertReservationSchema, 
-  insertReviewSchema 
+  insertReviewSchema,
+  type UserRole
 } from "@shared/schema";
 import { z } from "zod";
 
+interface UserClaims {
+  sub: string;
+  name?: string;
+  email?: string;
+}
+
+interface AuthUser {
+  claims: UserClaims;
+}
+
+interface AuthRequest extends Request {
+  user: AuthUser;
+}
+
+  // Basic type for authenticated requests
+interface AuthenticatedRequest extends Request {
+  user: {
+    claims: {
+      sub: string;
+    };
+    id?: string; // For local auth compatibility
+  };
+}
+
+// Authentication middleware
+function withAuth(handler: (req: AuthenticatedRequest, res: Response) => Promise<void>): RequestHandler {
+  return async (req, res, next) => {
+    const user = req.user as any;
+    if (!user?.claims?.sub) {
+      return res.status(401).json({ message: "Not authenticated" });
+    }
+    try {
+      await handler(req as AuthenticatedRequest, res);
+    } catch (error) {
+      next(error);
+    }
+  };
+}
+
+// Helper to wrap route handlers
+function wrapHandler(handler: (req: Request, res: Response) => Promise<void>): RequestHandler {
+  return async (req, res, next) => {
+    try {
+      await handler(req, res);
+    } catch (error) {
+      next(error);
+    }
+  };
+}
+
+interface RestaurantQueryParams {
+  query?: string;
+  cuisine?: string;
+  priceLevel?: string;
+  rating?: string;
+}
+
+interface AuthQueryParams {
+  id?: string;
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Auth middleware
+  // Determine auth setup based on environment
+  const isDev = app.get("env") === "development";
+  const setupAuth = isDev ? setupLocalAuth : setupReplitAuth;
+  const isAuthenticated = isDev ? localIsAuthenticated : replitIsAuthenticated;
+
+  // Setup auth middleware
   await setupAuth(app);
 
   // Auth routes
-  app.get('/api/auth/user', isAuthenticated, async (req: any, res) => {
+  const getUserHandler = async (req: AuthenticatedRequest, res: Response) => {
     try {
-      const userId = req.user.claims.sub;
+      const userId = isDev ? req.user.id : req.user.claims?.sub;
+      if (!userId) {
+        res.status(401).json({ message: "User not found" });
+        return;
+      }
       const user = await storage.getUser(userId);
       res.json(user);
     } catch (error) {
       console.error("Error fetching user:", error);
       res.status(500).json({ message: "Failed to fetch user" });
     }
-  });
+  };
+
+  app.get('/api/auth/user', isAuthenticated, withAuth(getUserHandler));
 
   // Restaurant routes
-  app.get('/api/restaurants', async (req, res) => {
+  const getRestaurantsHandler = async (req: Request, res: Response) => {
     try {
       const { query, cuisine, priceLevel, rating } = req.query;
       const filters = {
@@ -43,7 +117,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.error("Error fetching restaurants:", error);
       res.status(500).json({ message: "Failed to fetch restaurants" });
     }
-  });
+  };
+
+  app.get('/api/restaurants', wrapHandler(getRestaurantsHandler));
 
   app.get('/api/restaurants/:slug', async (req, res) => {
     try {
@@ -58,7 +134,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get('/api/restaurants/:id/tables', async (req, res) => {
+  app.get('/api/restaurants/:id/tables', isAuthenticated, async (req, res) => {
     try {
       const tables = await storage.getRestaurantTables(req.params.id);
       res.json(tables);
@@ -68,7 +144,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get('/api/restaurants/:id/availability', async (req, res) => {
+  app.get('/api/restaurants/:id/availability', isAuthenticated, async (req, res) => {
     try {
       const { date, startTime, endTime, tableId } = req.query;
       
@@ -404,6 +480,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   }, 60000); // Every minute
 
+  // Create the HTTP server
   const httpServer = createServer(app);
   return httpServer;
 }
